@@ -24,17 +24,20 @@ export default StyleSheet.create({
   searchInput: {
     height: lineHeight,
     borderWidth: 0.5,
-    borderColor: '#aaaaaa',
+    borderColor: '#eeeeee',
     fontSize: 14,
     padding: 7,
     justifyContent: 'center',
     backgroundColor: '#ffffff',
   },
-  changeButton: {
-    alignSelf: 'center',
-    marginTop: 5,
-    padding: 3,
-    borderWidth: 0.5,
-    borderColor: '#777777',
+  searchResult: {
+    padding: 5
   },
+  searchResults: {
+    marginTop: 2,
+    padding: 2,
+    borderWidth: 0.5,
+    borderColor: '#eeeeee',
+    backgroundColor: '#ffffff',
+  }
 });

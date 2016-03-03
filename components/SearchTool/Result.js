@@ -10,12 +10,15 @@ export class Result extends React.Component {
   };
   render = () => {
     return (
-      <React.View>
-        <React.TouchableHighlight>
+      <React.View style={styles.searchResult}>
+        <React.TouchableHighlight onPress={this.onPressHandler}>
           <React.Text>{this.props.name}</React.Text>
         </React.TouchableHighlight>
       </React.View>
     );
+  };
+  onPressHandler = () => {
+    console.log(this.props);
   };
 };
 
@@ -28,7 +31,7 @@ export default class Results extends React.Component {
       return (<Result key={station.id} {...station} />);
     });
     return (
-      <React.View>{ items }</React.View>
+      <React.View style={styles.searchResults}>{ items }</React.View>
     );
   };
 };

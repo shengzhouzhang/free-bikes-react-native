@@ -10,7 +10,7 @@ export default class SearchTool extends React.Component {
     stations: React.PropTypes.array.isRequired
   };
   state = {
-    text: ''
+    text: 'south'
   };
   render = () => {
     return (
@@ -26,7 +26,7 @@ export default class SearchTool extends React.Component {
   filter = (entities, keyword = '') => {
     if (keyword.length < 3) { return []; }
     return _.filter(entities, entity => {
-      return entity.name.search(keyword) >= 0;
+      return entity.name.search(new RegExp(keyword, 'i')) >= 0;
     });
   };
 }
