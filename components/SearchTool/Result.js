@@ -2,6 +2,7 @@
 import _ from 'lodash';
 import React from 'react-native';
 import styles from '../../style';
+import SelectedStation from '../../stores/station';
 
 export class Result extends React.Component {
   static propTypes = {
@@ -18,7 +19,10 @@ export class Result extends React.Component {
     );
   };
   onPressHandler = () => {
-    console.log(this.props);
+    SelectedStation.dispatch({
+      type: 'SELECT',
+      station: { id: this.props.id, name: this.props.name }
+    });
   };
 };
 
