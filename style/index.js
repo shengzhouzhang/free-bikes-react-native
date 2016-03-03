@@ -30,6 +30,9 @@ export default StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#ffffff',
   },
+  searchInfo: {
+    color: '#aaa'
+  },
   searchResult: {
     padding: 5
   },

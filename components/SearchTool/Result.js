@@ -26,6 +26,22 @@ export class Result extends React.Component {
   };
 };
 
+export class Info extends React.Component {
+  static propTypes = {
+    number: React.PropTypes.number.isRequired,
+  };
+  static defaultProps = {
+    number: 0
+  };
+  render = () => {
+    return (
+      <React.View style={styles.searchResult}>
+        <React.Text style={styles.searchInfo}>{`Found ${this.props.number} Stations.`}</React.Text>
+      </React.View>
+    );
+  };
+};
+
 export default class Results extends React.Component {
   static propTypes = {
     stations: React.PropTypes.array.isRequired
@@ -35,7 +51,10 @@ export default class Results extends React.Component {
       return (<Result key={station.id} {...station} />);
     });
     return (
-      <React.View style={styles.searchResults}>{ items }</React.View>
+      <React.View style={styles.searchResults}>
+        <Info number={this.props.stations.length} />
+        { items }
+      </React.View>
     );
   };
 };
