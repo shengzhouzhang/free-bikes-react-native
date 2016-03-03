@@ -4,6 +4,9 @@ import React from 'react-native';
 import styles from '../../style';
 
 const DEFAULT_ZOON_LEVEL = .1;
+const STROKE_COLOR = '#cd5c5c';
+const MAX_CIRCLE_SIZE = 15;
+const MIN_CIRCLE_SIZE = 5;
 
 export default class Map extends React.Component {
   static propTypes = {
@@ -24,7 +27,8 @@ export default class Map extends React.Component {
         <React.MapView style={styles.map}
           region={this.props.region}
           rotateEnabled={false}
-          annotations={this.parseEntitiesToAnnotations(this.props.stations)} >
+          overlays={this.parseEntitiesToOverlays(this.props.stations)}
+          >
         </React.MapView>
       </React.View>
     );
@@ -34,8 +38,26 @@ export default class Map extends React.Component {
       return {
         title: entity.name,
         latitude: entity.position.lat,
-        longitude: entity.position.lng
+        longitude: entity.position.lng,
+        animateDrop: true
       }
     });
+  };
+  parseEntitiesToOverlays = (entities) => {
+    let largest = _.maxBy(entities, entity => entity.numberOfBikes).numberOfBikes;
+    return _.map(entities, entity => {
+      return {
+        id: entity.id,
+        coordinates: [{
+          latitude: entity.position.lat,
+          longitude: entity.position.lng,
+        }],
+        lineWidth: this.getOverlaySize(entity.numberOfBikes, largest),
+        strokeColor: STROKE_COLOR
+      }
+    });
+  };
+  getOverlaySize = (numberOfBikes, largest) => {
+    return MIN_CIRCLE_SIZE + (numberOfBikes / largest) * (MAX_CIRCLE_SIZE - MIN_CIRCLE_SIZE);
   };
 };
