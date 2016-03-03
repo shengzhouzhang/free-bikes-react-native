@@ -46,7 +46,6 @@ export default StyleSheet.create({
   getDirection: {
     position: 'absolute',
     bottom: lineHeight,
-    left: lineHeight,
     right: lineHeight,
     width: 100,
     height: lineHeight,

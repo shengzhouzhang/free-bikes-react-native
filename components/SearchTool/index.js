@@ -13,7 +13,7 @@ export default class SearchTool extends React.Component {
     stations: React.PropTypes.array.isRequired
   };
   state = {
-    text: 'south',
+    text: '',
     showResults: true
   };
   render = () => {
@@ -34,7 +34,7 @@ export default class SearchTool extends React.Component {
     this.unsubscribe();
   };
   onSelectStationHandler = () => {
-    this.setState({ showResults: false });
+    this.setState({ text: SelectedStation.getState().name, showResults: false });
   };
   onTextChangeHandler = (text) => {
     this.setState({ text: text, showResults: true });

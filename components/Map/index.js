@@ -24,7 +24,8 @@ export default class Map extends React.Component {
       latitudeDelta: DEFAULT_ZOOM_LEVEL,
       longitudeDelta: DEFAULT_ZOOM_LEVEL
     },
-    name: 'melbourne city'
+    name: 'melbourne city',
+    showDirection: false
   };
   state = { region: this.props.region, name: '' };
   render = () => {
@@ -36,7 +37,7 @@ export default class Map extends React.Component {
           overlays={this.parseEntitiesToOverlays(this.props.stations)}
           >
         </React.MapView>
-        <Direction address={this.state.name} />
+        { this.state.showDirection ? (<Direction address={this.state.name} />) : (undefined) }
       </React.View>
     );
   };
@@ -60,7 +61,8 @@ export default class Map extends React.Component {
         latitudeDelta: ZOOMED_IN,
         longitudeDelta: ZOOMED_IN
       },
-      name: station.name
+      name: station.name,
+      showDirection: true
     });
   };
   parseEntitiesToAnnotations = (entities) => {
