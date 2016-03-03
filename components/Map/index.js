@@ -15,4 +15,4 @@ export default class Map extends React.Component {
       </React.View>
     );
   };
-}
+};

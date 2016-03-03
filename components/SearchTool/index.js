@@ -1,21 +1,32 @@
 
-'use strict';
-
+import _ from 'lodash';
 import React from 'react-native';
 import styles from '../../style';
+import Input from '../../components/SearchTool/Input';
+import Results from '../../components/SearchTool/Result';
 
 export default class SearchTool extends React.Component {
   static propTypes = {
     stations: React.PropTypes.array.isRequired
   };
-  static defaultProps = {
-    stations: []
+  state = {
+    text: ''
   };
   render = () => {
     return (
-      <React.TextInput value={this.props.stations[0].name} style={styles.textInput} onChange={this.onTextChangeHandler} />
+      <React.View style={styles.searchTool}>
+        <Input value={this.state.text} onTextChange={this.onTextChangeHandler} />
+        <Results stations={this.filter(this.props.stations, this.state.text)} />
+      </React.View>
     );
   };
-  onTextChangeHandler = () => {
+  onTextChangeHandler = (text) => {
+    this.setState({ text: text });
+  };
+  filter = (entities, keyword = '') => {
+    if (keyword.length < 3) { return []; }
+    return _.filter(entities, entity => {
+      return entity.name.search(keyword) >= 0;
+    });
   };
 }

@@ -15,11 +15,13 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  textInput: {
+  searchTool: {
     position: 'absolute',
     top: lineHeight,
     left: lineHeight,
-    right: lineHeight,
+    right: lineHeight
+  },
+  searchInput: {
     height: lineHeight,
     borderWidth: 0.5,
     borderColor: '#aaaaaa',
