@@ -5,24 +5,18 @@ import React from 'react-native';
 import SearchTool from '../../components/SearchTool';
 import Map from '../../components/Map';
 import styles from '../../style';
+import { parseRawToEntities } from '../../utils/parser';
+import raw from '../../data/bikes.json';
+
+let stations = parseRawToEntities(raw);
 
 export default class BikeApp extends React.Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      isFirstLoad: true,
-      mapRegion: undefined,
-      mapRegionInput: undefined,
-      annotations: []
-    };
-  }
-
-  render() {
+  render = () => {
     return (
       <React.View style={styles.container}>
-        <Map />
-        <SearchTool />
+        <Map stations={stations} />
+        <SearchTool stations={stations} />
       </React.View>
     );
-  }
+  };
 }
