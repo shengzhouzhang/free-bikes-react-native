@@ -42,5 +42,15 @@ export default StyleSheet.create({
     borderWidth: 0.5,
     borderColor: '#eeeeee',
     backgroundColor: '#ffffff',
+  },
+  getDirection: {
+    position: 'absolute',
+    bottom: lineHeight,
+    left: lineHeight,
+    right: lineHeight,
+    width: 100,
+    height: lineHeight,
+    padding: 5,
+    backgroundColor: '#ffffff'
   }
 });

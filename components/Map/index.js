@@ -3,6 +3,7 @@ import _ from 'lodash';
 import React from 'react-native';
 import styles from '../../style';
 import SelectedStation from '../../stores/station';
+import Direction from '../../components/Map/Direction';
 
 const DEFAULT_ZOOM_LEVEL = .1;
 const ZOOMED_IN = .01;
@@ -13,6 +14,7 @@ const MIN_CIRCLE_SIZE = 5;
 export default class Map extends React.Component {
   static propTypes = {
     region: React.PropTypes.object.isRequired,
+    name: React.PropTypes.string.isRequired,
     stations: React.PropTypes.array.isRequired
   };
   static defaultProps = {
@@ -21,9 +23,10 @@ export default class Map extends React.Component {
       longitude: 144.96,
       latitudeDelta: DEFAULT_ZOOM_LEVEL,
       longitudeDelta: DEFAULT_ZOOM_LEVEL
-    }
+    },
+    name: 'melbourne city'
   };
-  state = { region: this.props.region };
+  state = { region: this.props.region, name: '' };
   render = () => {
     return (
       <React.View style={styles.container}>
@@ -33,6 +36,7 @@ export default class Map extends React.Component {
           overlays={this.parseEntitiesToOverlays(this.props.stations)}
           >
         </React.MapView>
+        <Direction address={this.state.name} />
       </React.View>
     );
   };
@@ -49,14 +53,15 @@ export default class Map extends React.Component {
     let station = _.find(this.props.stations, station => {
       return !!selected && station.id === selected.id;
     });
-    let region = {
-      latitude: station.position.lat,
-      longitude: station.position.lng,
-      latitudeDelta: ZOOMED_IN,
-      longitudeDelta: ZOOMED_IN
-    };
-    console.log(region);
-    this.setState({ region });
+    this.setState({
+      region: {
+        latitude: station.position.lat,
+        longitude: station.position.lng,
+        latitudeDelta: ZOOMED_IN,
+        longitudeDelta: ZOOMED_IN
+      },
+      name: station.name
+    });
   };
   parseEntitiesToAnnotations = (entities) => {
     return _.map(entities, entity => {
