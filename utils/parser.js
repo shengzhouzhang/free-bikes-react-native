@@ -1,0 +1,4 @@
+
+export function parseRawToEntity (raw = {}) {
+
+};
