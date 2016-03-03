@@ -8,8 +8,8 @@ export function parseRawToEntities (raw = {}) {
       name: item[9],
       numberOfBikes: parseInt(item[11]),
       position: {
-        lat: item[14][1],
-        lng: item[14][2]
+        lat: parseFloat(item[14][1]),
+        lng: parseFloat(item[14][2])
       }
     };
   });
