@@ -8,13 +8,14 @@ import Direction from '../../components/Map/Direction';
 const DEFAULT_ZOOM_LEVEL = .1;
 const ZOOMED_IN = .01;
 const STROKE_COLOR = '#cd5c5c';
+const STROKE_COLOR_EMPTY = '#cd5c5c';
 const MAX_CIRCLE_SIZE = 15;
 const MIN_CIRCLE_SIZE = 5;
 
 export default class Map extends React.Component {
   static propTypes = {
-    region: React.PropTypes.object.isRequired,
-    name: React.PropTypes.string.isRequired,
+    region: React.PropTypes.object,
+    name: React.PropTypes.string,
     stations: React.PropTypes.array.isRequired
   };
   static defaultProps = {
@@ -27,7 +28,7 @@ export default class Map extends React.Component {
     name: 'melbourne city',
     showDirection: false
   };
-  state = { region: this.props.region, name: '' };
+  state = { region: this.props.region, name: this.props.name };
   render = () => {
     return (
       <React.View style={styles.container}>
@@ -35,24 +36,22 @@ export default class Map extends React.Component {
           region={this.state.region}
           rotateEnabled={false}
           overlays={this.parseEntitiesToOverlays(this.props.stations)}
-          >
-        </React.MapView>
+        />
         { this.state.showDirection ? (<Direction address={this.state.name} />) : (undefined) }
       </React.View>
     );
   };
   componentDidMount = () => {
     this.unsubscribe = SelectedStation.subscribe(() => {
-      this.onSelectStationHandler();
+      this.onSelectStationHandler(SelectedStation.getState());
     });
   };
   componentWillUnmount = () => {
     this.unsubscribe();
   };
-  onSelectStationHandler = () => {
-    let selected = SelectedStation.getState();
+  onSelectStationHandler = (selectedStation) => {
     let station = _.find(this.props.stations, station => {
-      return !!selected && station.id === selected.id;
+      return !!selectedStation && station.id === selectedStation.id;
     });
     this.setState({
       region: {
@@ -70,26 +69,28 @@ export default class Map extends React.Component {
       return {
         title: entity.name,
         latitude: entity.position.lat,
-        longitude: entity.position.lng,
-        animateDrop: true
+        longitude: entity.position.lng
       }
     });
   };
   parseEntitiesToOverlays = (entities) => {
     let largest = _.maxBy(entities, entity => entity.numberOfBikes).numberOfBikes;
     return _.map(entities, entity => {
-      return {
-        id: entity.id,
-        coordinates: [{
-          latitude: entity.position.lat,
-          longitude: entity.position.lng,
-        }],
-        lineWidth: this.getOverlaySize(entity.numberOfBikes, largest),
-        strokeColor: STROKE_COLOR
-      }
-    });
+        return {
+          id: entity.id,
+          coordinates: [{
+            latitude: entity.position.lat,
+            longitude: entity.position.lng,
+          }],
+          lineWidth: this.getOverlaySize(entity.numberOfBikes, largest),
+          strokeColor: entity.numberOfBikes ? STROKE_COLOR : STROKE_COLOR_EMPTY
+        }
+      });
   };
   getOverlaySize = (numberOfBikes, largest) => {
-    return MIN_CIRCLE_SIZE + (numberOfBikes / largest) * (MAX_CIRCLE_SIZE - MIN_CIRCLE_SIZE);
+    if (largest && numberOfBikes >= largest) { return MAX_CIRCLE_SIZE; }
+    if (numberOfBikes <= 0) { return MIN_CIRCLE_SIZE; }
+    if (largest <= 0) { return MIN_CIRCLE_SIZE; }
+    return _.max([ MIN_CIRCLE_SIZE + (numberOfBikes / largest) * (MAX_CIRCLE_SIZE - MIN_CIRCLE_SIZE), MIN_CIRCLE_SIZE ]);
   };
 };
