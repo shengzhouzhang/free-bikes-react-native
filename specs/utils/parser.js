@@ -6,6 +6,6 @@ describe('parser util', () => {
 
   it('should parse raw data into entity', () => {
     let entities = parseRawToEntities(raw);
-    console.log(entities);
+    // console.log(entities);
   });
 });
