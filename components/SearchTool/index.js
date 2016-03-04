@@ -3,7 +3,7 @@ import _ from 'lodash';
 import React from 'react-native';
 import styles from '../../style';
 import Input from '../../components/SearchTool/Input';
-import Results from '../../components/SearchTool/Result';
+import Results from '../../components/SearchTool/Results';
 import SelectedStation from '../../stores/station';
 
 export default class SearchTool extends React.Component {

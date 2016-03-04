@@ -5,7 +5,7 @@ import { shallow } from 'enzyme';
 import sinon from 'sinon';
 import SearchTool from '../../../components/SearchTool';
 import Input from '../../../components/SearchTool/Input';
-import Result from '../../../components/SearchTool/Result';
+import Result from '../../../components/SearchTool/Results';
 import SelectedStation from '../../../stores/station';
 
 describe('SearchTool Component', () => {
@@ -24,8 +24,7 @@ describe('SearchTool Component', () => {
 
     it('should has empty text value and isTyping false', () => {
       let wrapper = shallow(<SearchTool stations={TEST_STATIONS} />);
-      expect(wrapper.instance().state.text).to.eql('');
-      expect(wrapper.instance().state.isTyping).to.eql(false);
+      expect(wrapper.instance().state).to.eql({ text: '', isTyping: false });
     });
   });
 
