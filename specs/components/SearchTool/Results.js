@@ -17,7 +17,7 @@ describe('Results Component', () => {
     { id: '2', name: TEST_KEYWORD_2, numberOfBikes: 10, position: { lat: -10, lng: 10 } }
   ];
 
-  describe('render Info Component', () => {
+  describe('render Info component', () => {
 
     it('should provide the number of results to Info Component', () => {
       let wrapper = shallow(<Results stations={TEST_STATIONS} />);
@@ -26,7 +26,7 @@ describe('Results Component', () => {
     });
   });
 
-  describe('render Result Component', () => {
+  describe('render Result component', () => {
 
     it(`should render ${TEST_STATIONS.length} Result Component`, () => {
       let wrapper = shallow(<Results stations={TEST_STATIONS} />);
@@ -40,14 +40,16 @@ describe('Result Component', () => {
   const TEST_KEYWORD = 'keyword';
   const TEST_STATION = { id: '0', name: TEST_KEYWORD, numberOfBikes: 10, position: { lat: -10, lng: 10 } };
 
-  describe('render', () => {
+  describe('render Text component', () => {
 
     it('should render Text with station name', () => {
       let wrapper = shallow(<Result {...TEST_STATION} />);
       expect(wrapper.contains(<React.Text>{TEST_STATION.name}</React.Text>)).to.eql(true);
     });
+  });
 
-    it('should render TouchableHighlight with onPress handler', () => {
+  describe('render TouchableHighlight component', () => {
+    it('should provide onPress handler', () => {
       let wrapper = shallow(<Result {...TEST_STATION} />);
       expect(wrapper.find(React.TouchableHighlight)).to.have.length(1);
       expect(wrapper.find(React.TouchableHighlight).prop('onPress')).to.eql(wrapper.instance().onPressHandler);
@@ -65,6 +67,19 @@ describe('Result Component', () => {
       });
       wrapper.instance().onPressHandler();
       unsubscribe();
+    });
+  });
+});
+
+describe('Info Component', () => {
+
+  const TEST_NUMBER = 3;
+
+  describe('render Text component', () => {
+
+    it('should render Text with the number', () => {
+      let wrapper = shallow(<Info number={TEST_NUMBER} />);
+      expect(wrapper.find(React.Text).children().node).to.eql(`Found ${TEST_NUMBER} Stations.`);
     });
   });
 });
