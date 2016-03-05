@@ -1,6 +1,9 @@
 
 import _ from 'lodash';
 import BikeStation from '../domains/Station';
+import CONFIG from '../config';
+
+const FETCH_BIKES_URI = CONFIG.FETCH_BIKES_URI;
 
 export function parseAddress (addressStr) {
   try {
@@ -35,7 +38,7 @@ export default class BikesRepository {
     this.fetch = fetch;
   }
   fetchBikes = () => {
-    return this.fetch('https://data.melbourne.vic.gov.au/resource/tdvh-n9dv.json')
+    return this.fetch(FETCH_BIKES_URI)
       .then(res => res.json())
       .then(raw => parseRawToEntities(raw));
   };

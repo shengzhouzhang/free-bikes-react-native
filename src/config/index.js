@@ -5,7 +5,8 @@ const ENV = {
   STROKE_COLOR: '#cd5c5c',
   MAX_CIRCLE_SIZE: 15,
   MIN_CIRCLE_SIZE: 0,
-  DEFAULT_LINE_HEIGHT: 28
+  DEFAULT_LINE_HEIGHT: 28,
+  FETCH_BIKES_URI: 'https://data.melbourne.vic.gov.au/resource/tdvh-n9dv.json'
 };
 
 export default ENV;
