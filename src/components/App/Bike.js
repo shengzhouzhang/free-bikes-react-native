@@ -1,19 +1,14 @@
 
 import React from 'react-native';
 import styles from '../../style';
-import BikesRepository from '../../repositories/bikes';
 import SearchTool from '../../components/SearchTool';
 import Map from '../../components/Map';
 import Loading from '../../components/Loading';
 
 export default class BikeApp extends React.Component {
   static propTypes = {
-    fetch: React.PropTypes.func.isRequired
+    bikesRepository: React.PropTypes.object.isRequired
   };
-  constructor (props) {
-    super(props);
-    this.bikesRepository = new BikesRepository(this.props.fetch);
-  }
   state = {
     stations: [],
     isLoading: false
@@ -32,7 +27,7 @@ export default class BikeApp extends React.Component {
   };
   updateStations = () => {
     this.setState({ isLoading: true });
-    return this.bikesRepository.fetchBikes()
+    return this.props.bikesRepository.fetchBikes()
       .then(stations => this.setState({ stations: stations, isLoading: false }))
       .catch(err => {
         console.error(err);

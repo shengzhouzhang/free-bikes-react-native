@@ -3,10 +3,11 @@
 
 import React from 'react-native';
 import BikeApp from './src/components/App/Bike';
+import BikesRepository from './src/repositories/bikes';
 
 class App extends React.Component {
   render = () => {
-    return (<BikeApp fetch={fetch} />);
+    return (<BikeApp bikesRepository={new BikesRepository(fetch)} />);
   };
 }
 

@@ -21,6 +21,7 @@
     "no-shadow": 0,
     "padded-blocks": 0,
     "strict": 0,
+    "func-names": 0,
     "array-bracket-spacing": [2, "always"],
     "react/sort-comp": [2, {
       order: [

@@ -23,8 +23,8 @@ export function parseRawToEntities (raw = {}) {
       item.id,
       item.featurename,
       parseInt(item.nbbikes, 10),
-      parseFloat(item.coordinates.longitude),
       parseFloat(item.coordinates.latitude),
+      parseFloat(item.coordinates.longitude),
       parseAddress(item.coordinates.human_address)
     );
   });
