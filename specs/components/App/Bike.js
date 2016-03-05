@@ -59,7 +59,7 @@ describe('Bike App', () => {
 
   describe('componentDidMount', () => {
 
-    it('should call updateStations', () => {
+    it('should updateStations', () => {
       let wrapper = shallow(<Bike bikesRepository={new BikesRepository(fetch)} />);
       wrapper.instance().updateStations = sinon.spy();
       wrapper.instance().componentDidMount();
@@ -69,7 +69,7 @@ describe('Bike App', () => {
 
   describe('updateStations', () => {
 
-    it('should call updateStations', () => {
+    it('should fetchBikes', () => {
       let fetchBikes = sinon.stub().returns(Promise.resolve([]));
       let wrapper = shallow(<Bike bikesRepository={{ fetchBikes }} />);
       wrapper.instance().updateStations();

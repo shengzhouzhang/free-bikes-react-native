@@ -28,7 +28,7 @@ describe('Direction Component', () => {
 
   describe('onPressHandler', () => {
 
-    it('should invalve the call of prop onTextChange', () => {
+    it('should openURL', () => {
       let wrapper = shallow(<Direction address={TEST_ADDRESS} />);
       expect(wrapper.instance().onPressHandler).to.throws('LinkingManager is not defined');
     });

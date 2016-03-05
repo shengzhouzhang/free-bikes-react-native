@@ -24,7 +24,7 @@ describe('Input Component', () => {
 
   describe('onTextChangeHandler', () => {
 
-    it('should invalve the call of prop onTextChange', () => {
+    it('should trigger onTextChange prop', () => {
       let onTextChangeHandler = sinon.spy();
       let wrapper = shallow(<Input value="" onTextChange={onTextChangeHandler} />);
       wrapper.instance().onTextChangeHandler({ nativeEvent: { text: TEST_VALUE } });
