@@ -12,9 +12,9 @@ describe('Map Component', () => {
   const TEST_NAME = 'station name';
 
   const TEST_STATIONS = [
-    { id: 0, name: TEST_NAME.toUpperCase(), numberOfBikes: 10, position: { lat: -10, lng: 10 } },
-    { id: 1, name: TEST_NAME.toLowerCase(), numberOfBikes: 10, position: { lat: -10, lng: 10 } },
-    { id: 2, name: TEST_NAME, numberOfBikes: 10, position: { lat: -10, lng: 10 } },
+    { id: 0, name: TEST_NAME.toUpperCase(), numberOfBikes: 10, latitude: -10, longitude: 10, address: '' },
+    { id: 1, name: TEST_NAME.toLowerCase(), numberOfBikes: 10, latitude: -10, longitude: 10, address: '' },
+    { id: 2, name: TEST_NAME, numberOfBikes: 10, latitude: -10, longitude: 10, address: '' },
   ];
 
   describe('initial state', () => {
@@ -88,8 +88,8 @@ describe('Map Component', () => {
       expect(wrapper.instance().setState.called).to.eql(true);
       expect(wrapper.instance().setState.getCall(0).args[0]).to.eql({
         region: {
-          latitude: TEST_STATIONS[0].position.lat,
-          longitude: TEST_STATIONS[0].position.lng,
+          latitude: TEST_STATIONS[0].latitude,
+          longitude: TEST_STATIONS[0].longitude,
           latitudeDelta: .01,
           longitudeDelta: .01
         },
@@ -105,9 +105,9 @@ describe('Map Component', () => {
       let wrapper = shallow(<Map stations={TEST_STATIONS} />);
       let results = wrapper.instance().parseEntitiesToAnnotations(TEST_STATIONS);
       expect(results).to.eql([
-        { title: TEST_STATIONS[0].name, latitude: TEST_STATIONS[0].position.lat, longitude: TEST_STATIONS[0].position.lng },
-        { title: TEST_STATIONS[1].name, latitude: TEST_STATIONS[1].position.lat, longitude: TEST_STATIONS[1].position.lng },
-        { title: TEST_STATIONS[2].name, latitude: TEST_STATIONS[2].position.lat, longitude: TEST_STATIONS[2].position.lng }
+        { title: TEST_STATIONS[0].name, latitude: TEST_STATIONS[0].latitude, longitude: TEST_STATIONS[0].longitude },
+        { title: TEST_STATIONS[1].name, latitude: TEST_STATIONS[1].latitude, longitude: TEST_STATIONS[1].longitude },
+        { title: TEST_STATIONS[2].name, latitude: TEST_STATIONS[2].latitude, longitude: TEST_STATIONS[2].longitude }
       ]);
     });
   });
@@ -118,9 +118,9 @@ describe('Map Component', () => {
       let wrapper = shallow(<Map stations={TEST_STATIONS} />);
       let results = wrapper.instance().parseEntitiesToOverlays(TEST_STATIONS);
       expect(results).to.eql([
-        { id: TEST_STATIONS[0].id, coordinates: [{ latitude: TEST_STATIONS[0].position.lat, longitude: TEST_STATIONS[0].position.lng }], lineWidth: 15, strokeColor: '#cd5c5c' },
-        { id: TEST_STATIONS[1].id, coordinates: [{ latitude: TEST_STATIONS[1].position.lat, longitude: TEST_STATIONS[1].position.lng }], lineWidth: 15, strokeColor: '#cd5c5c' },
-        { id: TEST_STATIONS[2].id, coordinates: [{ latitude: TEST_STATIONS[2].position.lat, longitude: TEST_STATIONS[2].position.lng }], lineWidth: 15, strokeColor: '#cd5c5c' },
+        { id: TEST_STATIONS[0].id, coordinates: [{ latitude: TEST_STATIONS[0].latitude, longitude: TEST_STATIONS[0].longitude }], lineWidth: 15, strokeColor: '#cd5c5c' },
+        { id: TEST_STATIONS[1].id, coordinates: [{ latitude: TEST_STATIONS[1].latitude, longitude: TEST_STATIONS[1].longitude }], lineWidth: 15, strokeColor: '#cd5c5c' },
+        { id: TEST_STATIONS[2].id, coordinates: [{ latitude: TEST_STATIONS[2].latitude, longitude: TEST_STATIONS[2].longitude }], lineWidth: 15, strokeColor: '#cd5c5c' },
       ]);
     });
   });

@@ -12,9 +12,9 @@ describe('Results Component', () => {
   const TEST_KEYWORD_2 = 'another';
 
   const TEST_STATIONS = [
-    { id: '0', name: TEST_KEYWORD.toUpperCase(), numberOfBikes: 10, position: { lat: -10, lng: 10 } },
-    { id: '1', name: TEST_KEYWORD.toLowerCase(), numberOfBikes: 10, position: { lat: -10, lng: 10 } },
-    { id: '2', name: TEST_KEYWORD_2, numberOfBikes: 10, position: { lat: -10, lng: 10 } }
+    { id: '0', name: TEST_KEYWORD.toUpperCase(), numberOfBikes: 10, latitude: -10, longitude: 10, address: '' },
+    { id: '1', name: TEST_KEYWORD.toLowerCase(), numberOfBikes: 10, latitude: -10, longitude: 10, address: '' },
+    { id: '2', name: TEST_KEYWORD_2, numberOfBikes: 10, latitude: -10, longitude: 10, address: '' }
   ];
 
   describe('render Info component', () => {
@@ -38,7 +38,7 @@ describe('Results Component', () => {
 describe('Result Component', () => {
 
   const TEST_KEYWORD = 'keyword';
-  const TEST_STATION = { id: '0', name: TEST_KEYWORD, numberOfBikes: 10, position: { lat: -10, lng: 10 } };
+  const TEST_STATION = { id: '0', name: TEST_KEYWORD, numberOfBikes: 10, latitude: -10, longitude: 10, address: '' };
 
   describe('render Text component', () => {
 

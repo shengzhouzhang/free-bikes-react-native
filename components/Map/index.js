@@ -55,8 +55,8 @@ export default class Map extends React.Component {
     });
     this.setState({
       region: {
-        latitude: station.position.lat,
-        longitude: station.position.lng,
+        latitude: station.latitude,
+        longitude: station.longitude,
         latitudeDelta: ZOOMED_IN,
         longitudeDelta: ZOOMED_IN
       },
@@ -68,8 +68,8 @@ export default class Map extends React.Component {
     return _.map(entities, entity => {
       return {
         title: entity.name,
-        latitude: entity.position.lat,
-        longitude: entity.position.lng
+        latitude: entity.latitude,
+        longitude: entity.longitude
       }
     });
   };
@@ -79,8 +79,8 @@ export default class Map extends React.Component {
         return {
           id: entity.id,
           coordinates: [{
-            latitude: entity.position.lat,
-            longitude: entity.position.lng,
+            latitude: entity.latitude,
+            longitude: entity.longitude,
           }],
           lineWidth: this.getOverlaySize(entity.numberOfBikes, largest),
           strokeColor: entity.numberOfBikes ? STROKE_COLOR : STROKE_COLOR_EMPTY

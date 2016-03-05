@@ -4,4 +4,10 @@
 import React from 'react-native';
 import BikeApp from './components/App/Bike';
 
-React.AppRegistry.registerComponent('bikeShare', () => BikeApp);
+class App extends React.Component {
+  render = () => {
+    return (<BikeApp fetch={fetch} />);
+  };
+};
+
+React.AppRegistry.registerComponent('bikeShare', () => App);
