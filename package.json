@@ -20,6 +20,7 @@
     "babel-eslint": "^5.0.0",
     "bluebird": "^3.3.3",
     "chai": "^3.5.0",
+    "chance": "^1.0.1",
     "enzyme": "^2.0.0",
     "eslint": "^2.3.0",
     "eslint-config-airbnb": "^6.0.2",

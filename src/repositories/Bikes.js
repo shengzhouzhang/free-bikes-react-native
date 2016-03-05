@@ -15,7 +15,7 @@ export function parseAddress (addressStr) {
     if (data.zip) { address.push(data.zip); }
     return address.join(' ');
   } catch (err) {
-    console.error(`parseAddress error: ${addressStr}`);
+    console.error(`parseAddress error: ${err.message}, ${addressStr}`);
     return '';
   }
 }
