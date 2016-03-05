@@ -3,7 +3,7 @@ import _ from 'lodash';
 import React from 'react-native';
 import styles from '../../style';
 import SelectedStation from '../../stores/station';
-import Direction from '../../components/Map/Direction';
+import GetDirection from '../../components/Map/GetDirection';
 import CONFIG from '../../config';
 
 const DEFAULT_ZOOM_LEVEL = CONFIG.DEFAULT_ZOOM_LEVEL;
@@ -26,7 +26,7 @@ export default class Map extends React.Component {
       longitudeDelta: DEFAULT_ZOOM_LEVEL
     },
     name: 'melbourne city',
-    showDirection: false
+    showGetDirection: false
   };
   state = { region: this.props.region, name: this.props.name };
   render = () => {
@@ -37,7 +37,7 @@ export default class Map extends React.Component {
           rotateEnabled={false}
           overlays={this.parseEntitiesToOverlays(this.props.stations)}
         />
-        { this.state.showDirection ? (<Direction address={this.state.name} />) : (undefined) }
+        { this.state.showGetDirection ? (<GetDirection address={this.state.name} />) : (undefined) }
       </React.View>
     );
   };
@@ -61,7 +61,7 @@ export default class Map extends React.Component {
         longitudeDelta: ZOOMED_IN
       },
       name: station.name,
-      showDirection: true
+      showGetDirection: true
     });
   };
   parseEntitiesToAnnotations = (entities) => {

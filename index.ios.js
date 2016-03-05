@@ -2,12 +2,12 @@
 'use strict';
 
 import React from 'react-native';
-import BikeApp from './src/components/App/Bike';
+import BikesApp from './src/components/App/Bikes';
 import BikesRepository from './src/repositories/Bikes';
 
 class App extends React.Component {
   render = () => {
-    return (<BikeApp bikesRepository={new BikesRepository(fetch)} />);
+    return (<BikesApp bikesRepository={new BikesRepository(fetch)} />);
   };
 }
 

@@ -6,7 +6,7 @@ import CONFIG from '../../config';
 
 const EXTERNAL_MAP_URI = CONFIG.EXTERNAL_MAP_URI;
 
-export default class Direction extends React.Component {
+export default class GetDirection extends React.Component {
   static propTypes = {
     address: React.PropTypes.string.isRequired
   };

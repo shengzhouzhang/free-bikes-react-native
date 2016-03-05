@@ -1,6 +1,6 @@
 
 import _ from 'lodash';
-import BikeStation from '../domains/Station';
+import BikeStation from '../domains/BikeStation';
 import CONFIG from '../config';
 
 const FETCH_BIKES_URI = CONFIG.FETCH_BIKES_URI;

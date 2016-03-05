@@ -5,7 +5,7 @@ import { expect } from 'chai';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
 import Map from '../../../src/components/Map';
-import Direction from '../../../src/components/Map/Direction';
+import GetDirection from '../../../src/components/Map/GetDirection';
 import SelectedStation from '../../../src/stores/station';
 import CONFIG from '../../../src/config';
 
@@ -49,19 +49,19 @@ describe('Map component', () => {
 
   describe('render Direction component', () => {
 
-    it('should provide address when showDirection is true', () => {
+    it('should provide address when showGetDirection is true', () => {
       let wrapper = shallow(<Map stations={TEST_STATIONS} />);
-      wrapper.instance().setState({ showDirection: true });
+      wrapper.instance().setState({ showGetDirection: true });
       wrapper.update();
-      expect(wrapper.find(Direction)).to.have.length(1);
-      expect(wrapper.find(Direction).prop('address')).to.eql(wrapper.instance().state.name);
+      expect(wrapper.find(GetDirection)).to.have.length(1);
+      expect(wrapper.find(GetDirection).prop('address')).to.eql(wrapper.instance().state.name);
     });
 
-    it('should hide Direction when showDirection is false', () => {
+    it('should hide Direction when showGetDirection is false', () => {
       let wrapper = shallow(<Map stations={TEST_STATIONS} />);
-      wrapper.instance().setState({ showDirection: false });
+      wrapper.instance().setState({ showGetDirection: false });
       wrapper.update();
-      expect(wrapper.find(Direction)).to.have.length(0);
+      expect(wrapper.find(GetDirection)).to.have.length(0);
     });
   });
 
@@ -94,7 +94,7 @@ describe('Map component', () => {
 
   describe('onSelectStationHandler', () => {
 
-    it('should update state region, name, and showDirection', () => {
+    it('should update state region, name, and showGetDirection', () => {
       let wrapper = shallow(<Map stations={TEST_STATIONS} />);
       wrapper.instance().setState = sinon.spy();
       wrapper.instance().onSelectStationHandler(TEST_STATIONS[0]);
@@ -107,7 +107,7 @@ describe('Map component', () => {
           longitudeDelta: ZOOMED_IN
         },
         name: TEST_STATIONS[0].name,
-        showDirection: true
+        showGetDirection: true
       });
     });
   });
