@@ -4,9 +4,9 @@ import React from 'react-native';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
-import Bike from '../../../components/App/Bike';
-import Map from '../../../components/Map';
-import SearchTool from '../../../components/SearchTool';
+import Bike from '../../../src/components/App/Bike';
+import Map from '../../../src/components/Map';
+import SearchTool from '../../../src/components/SearchTool';
 
 describe('Bike App', () => {
 

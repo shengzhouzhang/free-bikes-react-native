@@ -1,6 +1,6 @@
 
 import fetch from 'node-fetch';
-import BikesRepository from '../../repositories/bikes';
+import BikesRepository from '../../src/repositories/bikes';
 
 describe('bikes repositories', () => {
 

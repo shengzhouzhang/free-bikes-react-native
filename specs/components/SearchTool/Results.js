@@ -3,8 +3,8 @@ import React from 'react-native';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
-import Results, { Result, Info } from '../../../components/SearchTool/Results';
-import SelectedStation from '../../../stores/station';
+import Results, { Result, Info } from '../../../src/components/SearchTool/Results';
+import SelectedStation from '../../../src/stores/station';
 
 describe('Results Component', () => {
 

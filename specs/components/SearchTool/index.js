@@ -3,10 +3,10 @@ import React from 'react-native';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
-import SearchTool from '../../../components/SearchTool';
-import Input from '../../../components/SearchTool/Input';
-import Result from '../../../components/SearchTool/Results';
-import SelectedStation from '../../../stores/station';
+import SearchTool from '../../../src/components/SearchTool';
+import Input from '../../../src/components/SearchTool/Input';
+import Result from '../../../src/components/SearchTool/Results';
+import SelectedStation from '../../../src/stores/station';
 
 describe('SearchTool Component', () => {
 

@@ -3,7 +3,7 @@ import React from 'react-native';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
-import Input from '../../../components/SearchTool/Input';
+import Input from '../../../src/components/SearchTool/Input';
 
 describe('Input Component', () => {
 

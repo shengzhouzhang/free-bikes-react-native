@@ -3,9 +3,9 @@ import React from 'react-native';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
-import Map from '../../../components/Map';
-import Direction from '../../../components/Map/Direction';
-import SelectedStation from '../../../stores/station';
+import Map from '../../../src/components/Map';
+import Direction from '../../../src/components/Map/Direction';
+import SelectedStation from '../../../src/stores/station';
 
 describe('Map Component', () => {
 

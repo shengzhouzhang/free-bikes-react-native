@@ -3,7 +3,7 @@ import React from 'react-native';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
-import Direction from '../../../components/Map/Direction';
+import Direction from '../../../src/components/Map/Direction';
 
 describe('Direction Component', () => {
 

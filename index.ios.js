@@ -2,7 +2,7 @@
 'use strict';
 
 import React from 'react-native';
-import BikeApp from './components/App/Bike';
+import BikeApp from './src/components/App/Bike';
 
 class App extends React.Component {
   render = () => {
