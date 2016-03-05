@@ -3,7 +3,7 @@
 import _ from 'lodash';
 import { expect } from 'chai';
 import fetch from 'node-fetch';
-import BikesRepository from '../../src/repositories/bikes';
+import BikesRepository from '../../src/repositories/Bikes';
 
 const DEFAULT_TIMEOUT = 10 * 1000;
 

@@ -3,7 +3,7 @@
 
 import React from 'react-native';
 import BikeApp from './src/components/App/Bike';
-import BikesRepository from './src/repositories/bikes';
+import BikesRepository from './src/repositories/Bikes';
 
 class App extends React.Component {
   render = () => {

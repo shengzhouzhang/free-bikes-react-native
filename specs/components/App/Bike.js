@@ -10,7 +10,7 @@ import Bike from '../../../src/components/App/Bike';
 import Map from '../../../src/components/Map';
 import SearchTool from '../../../src/components/SearchTool';
 import Loading from '../../../src/components/Loading';
-import BikesRepository from '../../../src/repositories/bikes';
+import BikesRepository from '../../../src/repositories/Bikes';
 
 describe('Bike App', () => {
 
