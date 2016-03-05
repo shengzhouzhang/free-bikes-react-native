@@ -42,14 +42,14 @@ describe('Bike App', () => {
 
   describe('render Loading component', () => {
 
-    it('should render when isLoading is true', () => {
+    it('should show when isLoading is true', () => {
       let wrapper = shallow(<Bike bikesRepository={new BikesRepository(fetch)} />);
       wrapper.instance().setState({ isLoading: true });
       wrapper.update();
       expect(wrapper.find(Loading)).to.have.length(1);
     });
 
-    it('should not render when isLoading is false', () => {
+    it('should hide when isLoading is false', () => {
       let wrapper = shallow(<Bike bikesRepository={new BikesRepository(fetch)} />);
       wrapper.instance().setState({ isLoading: false });
       wrapper.update();

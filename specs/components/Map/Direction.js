@@ -5,13 +5,13 @@ import { expect } from 'chai';
 import { shallow } from 'enzyme';
 import Direction from '../../../src/components/Map/Direction';
 
-describe('Direction Component', () => {
+describe('Direction component', () => {
 
   const TEST_ADDRESS = 'a test address';
 
   describe('render Text', () => {
 
-    it('should render Text with Get Direction text', () => {
+    it('should show Get Direction text', () => {
       let wrapper = shallow(<Direction address={TEST_ADDRESS} />);
       expect(wrapper.contains(<React.Text>Get Direction</React.Text>)).to.eql(true);
     });

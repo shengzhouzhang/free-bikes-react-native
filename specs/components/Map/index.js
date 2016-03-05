@@ -9,7 +9,7 @@ import Direction from '../../../src/components/Map/Direction';
 import SelectedStation from '../../../src/stores/station';
 import CONFIG from '../../../src/config';
 
-describe('Map Component', () => {
+describe('Map component', () => {
 
   const TEST_NAME = 'station name';
   const MAX_CIRCLE_SIZE = CONFIG.MAX_CIRCLE_SIZE;
@@ -57,7 +57,7 @@ describe('Map Component', () => {
       expect(wrapper.find(Direction).prop('address')).to.eql(wrapper.instance().state.name);
     });
 
-    it('should not render Direction when showDirection is false', () => {
+    it('should hide Direction when showDirection is false', () => {
       let wrapper = shallow(<Map stations={TEST_STATIONS} />);
       wrapper.instance().setState({ showDirection: false });
       wrapper.update();

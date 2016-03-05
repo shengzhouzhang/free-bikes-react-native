@@ -6,7 +6,7 @@ import { shallow } from 'enzyme';
 import Results, { Result, Info } from '../../../src/components/SearchTool/Results';
 import SelectedStation from '../../../src/stores/station';
 
-describe('Results Component', () => {
+describe('Results component', () => {
 
   const TEST_KEYWORD = 'keyword';
   const TEST_KEYWORD_2 = 'another';
@@ -22,7 +22,7 @@ describe('Results Component', () => {
 
   describe('render Info component', () => {
 
-    it('should provide the number of results to Info Component', () => {
+    it('should provide the number of results to Info component', () => {
       let wrapper = shallow(<Results stations={TEST_STATIONS} />);
       expect(wrapper.find(Info)).to.have.length(1);
       expect(wrapper.find(Info).prop('number')).to.eql(TEST_STATIONS.length);
@@ -31,14 +31,14 @@ describe('Results Component', () => {
 
   describe('render Result component', () => {
 
-    it(`should render ${TEST_STATIONS.length} Result Component`, () => {
+    it(`should show ${TEST_STATIONS.length} Result components`, () => {
       let wrapper = shallow(<Results stations={TEST_STATIONS} />);
       expect(wrapper.find(Result)).to.have.length(TEST_STATIONS.length);
     });
   });
 });
 
-describe('Result Component', () => {
+describe('Result component', () => {
 
   const TEST_KEYWORD = 'keyword';
   const TEST_STATION = { id: '0', name: TEST_KEYWORD, numberOfBikes: 10,
@@ -46,7 +46,7 @@ describe('Result Component', () => {
 
   describe('render Text component', () => {
 
-    it('should render Text with station name', () => {
+    it('should provide station name', () => {
       let wrapper = shallow(<Result {...TEST_STATION} />);
       expect(wrapper.contains(<React.Text>{TEST_STATION.name}</React.Text>)).to.eql(true);
     });
@@ -76,13 +76,13 @@ describe('Result Component', () => {
   });
 });
 
-describe('Info Component', () => {
+describe('Info component', () => {
 
   const TEST_NUMBER = 3;
 
   describe('render Text component', () => {
 
-    it('should render Text with the number', () => {
+    it('should provide the number', () => {
       let wrapper = shallow(<Info number={TEST_NUMBER} />);
       expect(wrapper.find(React.Text).children().node).to.eql(`Found ${TEST_NUMBER} Stations.`);
     });

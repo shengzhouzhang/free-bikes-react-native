@@ -6,7 +6,7 @@ import { shallow } from 'enzyme';
 import sinon from 'sinon';
 import Input from '../../../src/components/SearchTool/Input';
 
-describe('Input Component', () => {
+describe('Input component', () => {
 
   const TEST_VALUE = 'keyword';
 

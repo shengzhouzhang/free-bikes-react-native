@@ -9,7 +9,7 @@ import Input from '../../../src/components/SearchTool/Input';
 import Result from '../../../src/components/SearchTool/Results';
 import SelectedStation from '../../../src/stores/station';
 
-describe('SearchTool Component', () => {
+describe('SearchTool component', () => {
 
   const TEST_KEYWORD = 'keyword';
   const TEST_KEYWORD_2 = 'another';
@@ -32,7 +32,7 @@ describe('SearchTool Component', () => {
     });
   });
 
-  describe('render Input Component', () => {
+  describe('render Input component', () => {
 
     it('should update text value', () => {
       let wrapper = shallow(<SearchTool stations={TEST_STATIONS} />);
@@ -43,7 +43,7 @@ describe('SearchTool Component', () => {
       expect(wrapper.find(Input).prop('value')).to.eql(TEST_KEYWORD);
     });
 
-    it('should handle the onTextChange of Input Component', () => {
+    it('should handle the onTextChange of Input component', () => {
       let wrapper = shallow(<SearchTool stations={TEST_STATIONS} />);
       expect(wrapper.find(Input)).to.have.length(1);
       expect(wrapper.find(Input).prop('onTextChange')).to
@@ -51,9 +51,9 @@ describe('SearchTool Component', () => {
     });
   });
 
-  describe('render Result Component', () => {
+  describe('render Result component', () => {
 
-    it(`should render Result Component when typing more then ${MIN_LEN} characters`, () => {
+    it(`should show Result component when typing more then ${MIN_LEN} characters`, () => {
       let wrapper = shallow(<SearchTool stations={TEST_STATIONS} minimumKeywordLength={MIN_LEN} />);
       wrapper.instance().setState({ text: TEST_KEYWORD.substring(0, MIN_LEN + 1), isTyping: true });
       wrapper.update();
@@ -61,14 +61,14 @@ describe('SearchTool Component', () => {
       expect(wrapper.find(Result).prop('stations').length).to.eql(2);
     });
 
-    it('should not render Result Component when typing less characters', () => {
+    it('should hide Result component when typing less characters', () => {
       let wrapper = shallow(<SearchTool stations={TEST_STATIONS} minimumKeywordLength={MIN_LEN} />);
       wrapper.instance().setState({ text: TEST_KEYWORD.substring(0, MIN_LEN), isTyping: true });
       wrapper.update();
       expect(wrapper.find(Result)).to.have.length(0);
     });
 
-    it('should not render Result Component when clicking one of the results', () => {
+    it('should hide Result component when clicking one of the results', () => {
       let wrapper = shallow(<SearchTool stations={TEST_STATIONS} />);
       wrapper.instance().setState({ text: TEST_KEYWORD.substring(0, MIN_LEN + 1), isTyping: true });
       wrapper.update();
