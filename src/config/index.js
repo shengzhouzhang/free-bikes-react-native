@@ -6,7 +6,8 @@ const ENV = {
   MAX_CIRCLE_SIZE: 15,
   MIN_CIRCLE_SIZE: 0,
   DEFAULT_LINE_HEIGHT: 28,
-  FETCH_BIKES_URI: 'https://data.melbourne.vic.gov.au/resource/tdvh-n9dv.json'
+  FETCH_BIKES_URI: 'https://data.melbourne.vic.gov.au/resource/tdvh-n9dv.json',
+  EXTERNAL_MAP_URI: 'https://maps.apple.com'
 };
 
 export default ENV;

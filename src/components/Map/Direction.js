@@ -2,6 +2,9 @@
 import _ from 'lodash';
 import React from 'react-native';
 import styles from '../../style';
+import CONFIG from '../../config';
+
+const EXTERNAL_MAP_URI = CONFIG.EXTERNAL_MAP_URI;
 
 export default class Direction extends React.Component {
   static propTypes = {
@@ -17,7 +20,7 @@ export default class Direction extends React.Component {
     );
   };
   onPressHandler = () => {
-    let url = `https://maps.apple.com/?daddr=${this.encodeUrl(this.props.address)}`;
+    let url = `${EXTERNAL_MAP_URI}?daddr=${this.encodeUrl(this.props.address)}`;
     console.log(this.props, url);
     React.Linking.openURL(url);
   };
