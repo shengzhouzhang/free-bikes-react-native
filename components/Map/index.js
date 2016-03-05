@@ -4,13 +4,13 @@ import React from 'react-native';
 import styles from '../../style';
 import SelectedStation from '../../stores/station';
 import Direction from '../../components/Map/Direction';
+import CONFIG from '../../config';
 
-const DEFAULT_ZOOM_LEVEL = .1;
-const ZOOMED_IN = .01;
-const STROKE_COLOR = '#cd5c5c';
-const STROKE_COLOR_EMPTY = '#cd5c5c';
-const MAX_CIRCLE_SIZE = 15;
-const MIN_CIRCLE_SIZE = 5;
+const DEFAULT_ZOOM_LEVEL = CONFIG.DEFAULT_ZOOM_LEVEL;
+const ZOOMED_IN = CONFIG.ZOOMED_IN;
+const STROKE_COLOR = CONFIG.STROKE_COLOR;
+const MAX_CIRCLE_SIZE = CONFIG.MAX_CIRCLE_SIZE;
+const MIN_CIRCLE_SIZE = CONFIG.MIN_CIRCLE_SIZE;
 
 export default class Map extends React.Component {
   static propTypes = {
@@ -84,7 +84,7 @@ export default class Map extends React.Component {
             longitude: entity.longitude,
           }],
           lineWidth: this.getOverlaySize(entity.numberOfBikes, largest),
-          strokeColor: entity.numberOfBikes ? STROKE_COLOR : STROKE_COLOR_EMPTY
+          strokeColor: STROKE_COLOR
         }
       });
   };

@@ -1,0 +1,11 @@
+
+const ENV = {
+  DEFAULT_ZOOM_LEVEL: .1,
+  ZOOMED_IN: .01,
+  STROKE_COLOR: '#cd5c5c',
+  MAX_CIRCLE_SIZE: 15,
+  MIN_CIRCLE_SIZE: 0,
+  DEFAULT_LINE_HEIGHT: 28
+};
+
+export default ENV;

@@ -1,7 +1,8 @@
 
 import { StyleSheet } from 'react-native';
+import CONFIG from '../config';
 
-const lineHeight = 28;
+const DEFAULT_LINE_HEIGHT = CONFIG.DEFAULT_LINE_HEIGHT;
 
 export default StyleSheet.create({
   container: {
@@ -17,12 +18,12 @@ export default StyleSheet.create({
   },
   searchTool: {
     position: 'absolute',
-    top: lineHeight,
-    left: lineHeight,
-    right: lineHeight
+    top: DEFAULT_LINE_HEIGHT,
+    left: DEFAULT_LINE_HEIGHT,
+    right: DEFAULT_LINE_HEIGHT
   },
   searchInput: {
-    height: lineHeight,
+    height: DEFAULT_LINE_HEIGHT,
     borderWidth: 0.5,
     borderColor: '#eeeeee',
     fontSize: 14,
@@ -45,16 +46,16 @@ export default StyleSheet.create({
   },
   getDirection: {
     position: 'absolute',
-    bottom: lineHeight * 2,
-    right: lineHeight,
+    bottom: DEFAULT_LINE_HEIGHT * 2,
+    right: DEFAULT_LINE_HEIGHT,
     width: 100,
-    height: lineHeight,
+    height: DEFAULT_LINE_HEIGHT,
     padding: 5,
     backgroundColor: '#ffffff'
   },
   loading: {
     position: 'absolute',
-    bottom: lineHeight * 2,
-    left: lineHeight
+    bottom: DEFAULT_LINE_HEIGHT * 2,
+    left: DEFAULT_LINE_HEIGHT
   }
 });
