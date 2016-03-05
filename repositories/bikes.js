@@ -10,7 +10,7 @@ export function parseRawToEntities (raw = {}) {
       parseInt(item.nbbikes),
       parseFloat(item.coordinates.longitude),
       parseFloat(item.coordinates.latitude),
-      parseAddress(item.human_address)
+      parseAddress(item.coordinates.human_address)
     );
   });
 };

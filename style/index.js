@@ -45,11 +45,16 @@ export default StyleSheet.create({
   },
   getDirection: {
     position: 'absolute',
-    bottom: lineHeight,
+    bottom: lineHeight * 2,
     right: lineHeight,
     width: 100,
     height: lineHeight,
     padding: 5,
     backgroundColor: '#ffffff'
+  },
+  loading: {
+    position: 'absolute',
+    bottom: lineHeight * 2,
+    left: lineHeight
   }
 });

@@ -74,7 +74,8 @@ export default class Map extends React.Component {
     });
   };
   parseEntitiesToOverlays = (entities) => {
-    let largest = _.maxBy(entities, entity => entity.numberOfBikes).numberOfBikes;
+    let largestStation = _.maxBy(entities, entity => entity.numberOfBikes);
+    let largest = largestStation && largestStation.numberOfBikes || 0;
     return _.map(entities, entity => {
         return {
           id: entity.id,
