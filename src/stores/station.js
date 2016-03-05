@@ -1,12 +1,13 @@
 
 import { createStore } from 'redux';
 
-function counter(station = {}, action) {
+function counter (station = {}, action) {
   switch (action.type) {
     case 'SELECT':
-      return action.station
+      return action.station;
     default:
-      return station
+      return station;
   }
 }
-export default createStore(counter)
+
+export default createStore(counter);

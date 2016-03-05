@@ -7,5 +7,5 @@ export default class BikeStation {
     this.longitude = longitude;
     this.latitude = latitude;
     this.address = address;
-  };
+  }
 }

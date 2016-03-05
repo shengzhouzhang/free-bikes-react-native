@@ -24,7 +24,7 @@ export class Result extends React.Component {
       station: { id: this.props.id, name: this.props.name }
     });
   };
-};
+}
 
 export class Info extends React.Component {
   static propTypes = {
@@ -40,7 +40,7 @@ export class Info extends React.Component {
       </React.View>
     );
   };
-};
+}
 
 export default class Results extends React.Component {
   static propTypes = {
@@ -57,4 +57,4 @@ export default class Results extends React.Component {
       </React.View>
     );
   };
-};
+}

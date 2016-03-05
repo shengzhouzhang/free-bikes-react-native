@@ -1,3 +1,4 @@
+/* global describe it */
 
 import fetch from 'node-fetch';
 import BikesRepository from '../../src/repositories/bikes';

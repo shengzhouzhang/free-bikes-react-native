@@ -1,3 +1,4 @@
+/* global describe it */
 
 import React from 'react-native';
 import { expect } from 'chai';
@@ -15,9 +16,12 @@ describe('SearchTool Component', () => {
   const MIN_LEN = 3;
 
   const TEST_STATIONS = [
-    { id: 0, name: TEST_KEYWORD.toUpperCase(), numberOfBikes: 10, latitude: -10, longitude: 10, address: '' },
-    { id: 1, name: TEST_KEYWORD.toLowerCase(), numberOfBikes: 10, latitude: -10, longitude: 10, address: '' },
-    { id: 2, name: TEST_KEYWORD_2, numberOfBikes: 10, latitude: -10, longitude: 10, address: '' },
+    { id: 0, name: TEST_KEYWORD.toUpperCase(), numberOfBikes: 10,
+      latitude: -10, longitude: 10, address: '' },
+    { id: 1, name: TEST_KEYWORD.toLowerCase(), numberOfBikes: 10,
+      latitude: -10, longitude: 10, address: '' },
+    { id: 2, name: TEST_KEYWORD_2, numberOfBikes: 10,
+      latitude: -10, longitude: 10, address: '' },
   ];
 
   describe('initial state', () => {
@@ -42,7 +46,8 @@ describe('SearchTool Component', () => {
     it('should handle the onTextChange of Input Component', () => {
       let wrapper = shallow(<SearchTool stations={TEST_STATIONS} />);
       expect(wrapper.find(Input)).to.have.length(1);
-      expect(wrapper.find(Input).prop('onTextChange')).to.eql(wrapper.instance().onTextChangeHandler);
+      expect(wrapper.find(Input).prop('onTextChange')).to
+        .eql(wrapper.instance().onTextChangeHandler);
     });
   });
 
@@ -80,9 +85,13 @@ describe('SearchTool Component', () => {
       let wrapper = shallow(<SearchTool stations={TEST_STATIONS} />);
       wrapper.instance().componentDidMount();
       wrapper.instance().onSelectStationHandler = sinon.spy();
-      SelectedStation.dispatch({ type: 'SELECT', station: { id: TEST_STATIONS[0].id, name: TEST_STATIONS[0].name } });
+      SelectedStation.dispatch({
+        type: 'SELECT',
+        station: { id: TEST_STATIONS[0].id, name: TEST_STATIONS[0].name }
+      });
       expect(wrapper.instance().onSelectStationHandler.called).to.eql(true);
-      expect(wrapper.instance().onSelectStationHandler.getCall(0).args[0]).to.eql(TEST_STATIONS[0].name);
+      expect(wrapper.instance().onSelectStationHandler.getCall(0).args[0]).to
+        .eql(TEST_STATIONS[0].name);
     });
   });
 
@@ -101,9 +110,10 @@ describe('SearchTool Component', () => {
     it('should update text and isTyping state', () => {
       let wrapper = shallow(<SearchTool stations={TEST_STATIONS} />);
       wrapper.instance().setState = sinon.spy();
-      let results = wrapper.instance().onSelectStationHandler(TEST_KEYWORD);
+      wrapper.instance().onSelectStationHandler(TEST_KEYWORD);
       expect(wrapper.instance().setState.called).to.eql(true);
-      expect(wrapper.instance().setState.getCall(0).args[0]).to.eql({ text: TEST_KEYWORD, isTyping: false });
+      expect(wrapper.instance().setState.getCall(0).args[0]).to
+        .eql({ text: TEST_KEYWORD, isTyping: false });
     });
   });
 
@@ -112,9 +122,10 @@ describe('SearchTool Component', () => {
     it('should update text and isTyping state', () => {
       let wrapper = shallow(<SearchTool stations={TEST_STATIONS} />);
       wrapper.instance().setState = sinon.spy();
-      let results = wrapper.instance().onTextChangeHandler(TEST_KEYWORD);
+      wrapper.instance().onTextChangeHandler(TEST_KEYWORD);
       expect(wrapper.instance().setState.called).to.eql(true);
-      expect(wrapper.instance().setState.getCall(0).args[0]).to.eql({ text: TEST_KEYWORD, isTyping: true });
+      expect(wrapper.instance().setState.getCall(0).args[0]).to
+        .eql({ text: TEST_KEYWORD, isTyping: true });
     });
   });
 

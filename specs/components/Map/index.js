@@ -1,3 +1,4 @@
+/* global describe it */
 
 import React from 'react-native';
 import { expect } from 'chai';
@@ -16,16 +17,20 @@ describe('Map Component', () => {
   const ZOOMED_IN = CONFIG.ZOOMED_IN;
 
   const TEST_STATIONS = [
-    { id: 0, name: TEST_NAME.toUpperCase(), numberOfBikes: 10, latitude: -10, longitude: 10, address: '' },
-    { id: 1, name: TEST_NAME.toLowerCase(), numberOfBikes: 10, latitude: -10, longitude: 10, address: '' },
-    { id: 2, name: TEST_NAME, numberOfBikes: 10, latitude: -10, longitude: 10, address: '' },
+    { id: 0, name: TEST_NAME.toUpperCase(), numberOfBikes: 10,
+      latitude: -10, longitude: 10, address: '' },
+    { id: 1, name: TEST_NAME.toLowerCase(), numberOfBikes: 10,
+      latitude: -10, longitude: 10, address: '' },
+    { id: 2, name: TEST_NAME, numberOfBikes: 10,
+      latitude: -10, longitude: 10, address: '' },
   ];
 
   describe('initial state', () => {
 
     it('should set region and name to default props', () => {
       let wrapper = shallow(<Map stations={TEST_STATIONS} />);
-      expect(wrapper.instance().state).to.eql({ region: Map.defaultProps.region, name: Map.defaultProps.name });
+      expect(wrapper.instance().state).to.eql({
+        region: Map.defaultProps.region, name: Map.defaultProps.name });
     });
   });
 
@@ -44,7 +49,7 @@ describe('Map Component', () => {
 
   describe('render Direction component', () => {
 
-    it('should render Direction width address when showDirection is true', () => {
+    it('should provide address when showDirection is true', () => {
       let wrapper = shallow(<Map stations={TEST_STATIONS} />);
       wrapper.instance().setState({ showDirection: true });
       wrapper.update();
@@ -66,9 +71,13 @@ describe('Map Component', () => {
       let wrapper = shallow(<Map stations={TEST_STATIONS} />);
       wrapper.instance().componentDidMount();
       wrapper.instance().onSelectStationHandler = sinon.spy();
-      SelectedStation.dispatch({ type: 'SELECT', station: { id: TEST_STATIONS[0].id, name: TEST_STATIONS[0].name } });
+      SelectedStation.dispatch({
+        type: 'SELECT',
+        station: { id: TEST_STATIONS[0].id, name: TEST_STATIONS[0].name }
+      });
       expect(wrapper.instance().onSelectStationHandler.called).to.eql(true);
-      expect(wrapper.instance().onSelectStationHandler.getCall(0).args[0]).to.eql({ id: TEST_STATIONS[0].id, name: TEST_STATIONS[0].name });
+      expect(wrapper.instance().onSelectStationHandler.getCall(0).args[0]).to
+        .eql({ id: TEST_STATIONS[0].id, name: TEST_STATIONS[0].name });
       wrapper.instance().componentWillUnmount();
     });
   });
@@ -109,9 +118,12 @@ describe('Map Component', () => {
       let wrapper = shallow(<Map stations={TEST_STATIONS} />);
       let results = wrapper.instance().parseEntitiesToAnnotations(TEST_STATIONS);
       expect(results).to.eql([
-        { title: TEST_STATIONS[0].name, latitude: TEST_STATIONS[0].latitude, longitude: TEST_STATIONS[0].longitude },
-        { title: TEST_STATIONS[1].name, latitude: TEST_STATIONS[1].latitude, longitude: TEST_STATIONS[1].longitude },
-        { title: TEST_STATIONS[2].name, latitude: TEST_STATIONS[2].latitude, longitude: TEST_STATIONS[2].longitude }
+        { title: TEST_STATIONS[0].name, latitude: TEST_STATIONS[0].latitude,
+          longitude: TEST_STATIONS[0].longitude },
+        { title: TEST_STATIONS[1].name, latitude: TEST_STATIONS[1].latitude,
+          longitude: TEST_STATIONS[1].longitude },
+        { title: TEST_STATIONS[2].name, latitude: TEST_STATIONS[2].latitude,
+          longitude: TEST_STATIONS[2].longitude }
       ]);
     });
   });
@@ -121,11 +133,30 @@ describe('Map Component', () => {
     it('should get overlays for MapView', () => {
       let wrapper = shallow(<Map stations={TEST_STATIONS} />);
       let results = wrapper.instance().parseEntitiesToOverlays(TEST_STATIONS);
-      expect(results).to.eql([
-        { id: TEST_STATIONS[0].id, coordinates: [{ latitude: TEST_STATIONS[0].latitude, longitude: TEST_STATIONS[0].longitude }], lineWidth: 15, strokeColor: '#cd5c5c' },
-        { id: TEST_STATIONS[1].id, coordinates: [{ latitude: TEST_STATIONS[1].latitude, longitude: TEST_STATIONS[1].longitude }], lineWidth: 15, strokeColor: '#cd5c5c' },
-        { id: TEST_STATIONS[2].id, coordinates: [{ latitude: TEST_STATIONS[2].latitude, longitude: TEST_STATIONS[2].longitude }], lineWidth: 15, strokeColor: '#cd5c5c' },
-      ]);
+      expect(results).to.eql([ {
+        id: TEST_STATIONS[0].id,
+        coordinates: [ {
+          latitude: TEST_STATIONS[0].latitude,
+          longitude: TEST_STATIONS[0].longitude
+        } ],
+        lineWidth: 15, strokeColor: '#cd5c5c'
+      }, {
+        id: TEST_STATIONS[1].id,
+        coordinates: [ {
+          latitude: TEST_STATIONS[1].latitude,
+          longitude: TEST_STATIONS[1].longitude
+        } ],
+        lineWidth: 15,
+        strokeColor: '#cd5c5c'
+      }, {
+        id: TEST_STATIONS[2].id,
+        coordinates: [ {
+          latitude: TEST_STATIONS[2].latitude,
+          longitude: TEST_STATIONS[2].longitude
+        } ],
+        lineWidth: 15,
+        strokeColor: '#cd5c5c'
+      } ]);
     });
   });
 

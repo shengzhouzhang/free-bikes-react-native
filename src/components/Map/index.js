@@ -70,28 +70,29 @@ export default class Map extends React.Component {
         title: entity.name,
         latitude: entity.latitude,
         longitude: entity.longitude
-      }
+      };
     });
   };
   parseEntitiesToOverlays = (entities) => {
     let largestStation = _.maxBy(entities, entity => entity.numberOfBikes);
     let largest = largestStation && largestStation.numberOfBikes || 0;
     return _.map(entities, entity => {
-        return {
-          id: entity.id,
-          coordinates: [{
-            latitude: entity.latitude,
-            longitude: entity.longitude,
-          }],
-          lineWidth: this.getOverlaySize(entity.numberOfBikes, largest),
-          strokeColor: STROKE_COLOR
-        }
-      });
+      return {
+        id: entity.id,
+        coordinates: [ {
+          latitude: entity.latitude,
+          longitude: entity.longitude,
+        } ],
+        lineWidth: this.getOverlaySize(entity.numberOfBikes, largest),
+        strokeColor: STROKE_COLOR
+      };
+    });
   };
   getOverlaySize = (numberOfBikes, largest) => {
     if (largest && numberOfBikes >= largest) { return MAX_CIRCLE_SIZE; }
     if (numberOfBikes <= 0) { return MIN_CIRCLE_SIZE; }
     if (largest <= 0) { return MIN_CIRCLE_SIZE; }
-    return _.max([ MIN_CIRCLE_SIZE + (numberOfBikes / largest) * (MAX_CIRCLE_SIZE - MIN_CIRCLE_SIZE), MIN_CIRCLE_SIZE ]);
+    return _.max([ MIN_CIRCLE_SIZE + (numberOfBikes / largest) *
+      (MAX_CIRCLE_SIZE - MIN_CIRCLE_SIZE), MIN_CIRCLE_SIZE ]);
   };
-};
+}

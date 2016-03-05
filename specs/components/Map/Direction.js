@@ -1,8 +1,8 @@
+/* global describe it */
 
 import React from 'react-native';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
-import sinon from 'sinon';
 import Direction from '../../../src/components/Map/Direction';
 
 describe('Direction Component', () => {

@@ -1,8 +1,8 @@
+/* global describe it */
 
 import React from 'react-native';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
-import sinon from 'sinon';
 import Results, { Result, Info } from '../../../src/components/SearchTool/Results';
 import SelectedStation from '../../../src/stores/station';
 
@@ -12,9 +12,12 @@ describe('Results Component', () => {
   const TEST_KEYWORD_2 = 'another';
 
   const TEST_STATIONS = [
-    { id: '0', name: TEST_KEYWORD.toUpperCase(), numberOfBikes: 10, latitude: -10, longitude: 10, address: '' },
-    { id: '1', name: TEST_KEYWORD.toLowerCase(), numberOfBikes: 10, latitude: -10, longitude: 10, address: '' },
-    { id: '2', name: TEST_KEYWORD_2, numberOfBikes: 10, latitude: -10, longitude: 10, address: '' }
+    { id: '0', name: TEST_KEYWORD.toUpperCase(), numberOfBikes: 10,
+      latitude: -10, longitude: 10, address: '' },
+    { id: '1', name: TEST_KEYWORD.toLowerCase(), numberOfBikes: 10,
+      latitude: -10, longitude: 10, address: '' },
+    { id: '2', name: TEST_KEYWORD_2, numberOfBikes: 10,
+      latitude: -10, longitude: 10, address: '' }
   ];
 
   describe('render Info component', () => {
@@ -38,7 +41,8 @@ describe('Results Component', () => {
 describe('Result Component', () => {
 
   const TEST_KEYWORD = 'keyword';
-  const TEST_STATION = { id: '0', name: TEST_KEYWORD, numberOfBikes: 10, latitude: -10, longitude: 10, address: '' };
+  const TEST_STATION = { id: '0', name: TEST_KEYWORD, numberOfBikes: 10,
+    latitude: -10, longitude: 10, address: '' };
 
   describe('render Text component', () => {
 
@@ -52,7 +56,8 @@ describe('Result Component', () => {
     it('should provide onPress handler', () => {
       let wrapper = shallow(<Result {...TEST_STATION} />);
       expect(wrapper.find(React.TouchableHighlight)).to.have.length(1);
-      expect(wrapper.find(React.TouchableHighlight).prop('onPress')).to.eql(wrapper.instance().onPressHandler);
+      expect(wrapper.find(React.TouchableHighlight).prop('onPress')).to
+        .eql(wrapper.instance().onPressHandler);
     });
   });
 

@@ -26,4 +26,4 @@ export default class Direction extends React.Component {
       return token !== '-' && token !== '/';
     }).join('+');
   };
-};
+}

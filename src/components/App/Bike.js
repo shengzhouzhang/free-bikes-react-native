@@ -11,7 +11,7 @@ export default class BikeApp extends React.Component {
     fetch: React.PropTypes.func.isRequired
   };
   constructor (props) {
-    super(props)
+    super(props);
     this.bikesRepository = new BikesRepository(this.props.fetch);
   }
   state = {
