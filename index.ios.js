@@ -8,6 +8,6 @@ class App extends React.Component {
   render = () => {
     return (<BikeApp fetch={fetch} />);
   };
-};
+}
 
 React.AppRegistry.registerComponent('bikeShare', () => App);

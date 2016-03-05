@@ -21,7 +21,8 @@ describe('Direction Component', () => {
 
     it('should provide onPress handler', () => {
       let wrapper = shallow(<Direction address={TEST_ADDRESS} />);
-      expect(wrapper.find(React.TouchableHighlight).prop('onPress')).to.eql(wrapper.instance().onPressHandler);
+      expect(wrapper.find(React.TouchableHighlight).prop('onPress')).to
+        .eql(wrapper.instance().onPressHandler);
     });
   });
 
