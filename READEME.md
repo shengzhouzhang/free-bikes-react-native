@@ -26,7 +26,7 @@ $ npm start
 ```
 
 It will build the program with the production dependencies only.
-Notes that it is very important to only use production dependencies to build the program.
+It is very important to only use production dependencies to build the program.
 
 # Testing
 
