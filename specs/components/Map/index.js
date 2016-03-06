@@ -12,8 +12,8 @@ import CONFIG from '../../../src/config';
 describe('Map component', () => {
 
   const TEST_NAME = 'station name';
-  const MAX_CIRCLE_SIZE = CONFIG.MAX_CIRCLE_SIZE;
-  const MIN_CIRCLE_SIZE = CONFIG.MIN_CIRCLE_SIZE;
+  const MAX_OVERLAY_SIZE = CONFIG.MAX_OVERLAY_SIZE;
+  const MIN_OVERLAY_SIZE = CONFIG.MIN_OVERLAY_SIZE;
   const ZOOMED_IN = CONFIG.ZOOMED_IN;
 
   const TEST_STATIONS = [
@@ -165,31 +165,31 @@ describe('Map component', () => {
     it('should get the min size', () => {
       let wrapper = shallow(<Map stations={TEST_STATIONS} />);
       let result = wrapper.instance().getOverlaySize(0, 5);
-      expect(result).to.eql(MIN_CIRCLE_SIZE);
+      expect(result).to.eql(MIN_OVERLAY_SIZE);
     });
 
     it('should get the min size', () => {
       let wrapper = shallow(<Map stations={TEST_STATIONS} />);
       let result = wrapper.instance().getOverlaySize(0, 0);
-      expect(result).to.eql(MIN_CIRCLE_SIZE);
+      expect(result).to.eql(MIN_OVERLAY_SIZE);
     });
 
     it('should get the max size', () => {
       let wrapper = shallow(<Map stations={TEST_STATIONS} />);
       let result = wrapper.instance().getOverlaySize(5, 5);
-      expect(result).to.eql(MAX_CIRCLE_SIZE);
+      expect(result).to.eql(MAX_OVERLAY_SIZE);
     });
 
     it('should get the max size', () => {
       let wrapper = shallow(<Map stations={TEST_STATIONS} />);
       let result = wrapper.instance().getOverlaySize(10, 5);
-      expect(result).to.eql(MAX_CIRCLE_SIZE);
+      expect(result).to.eql(MAX_OVERLAY_SIZE);
     });
 
     it('should get a number between min and max', () => {
       let wrapper = shallow(<Map stations={TEST_STATIONS} />);
       let result = wrapper.instance().getOverlaySize(5, 10);
-      expect(result).to.eql(MAX_CIRCLE_SIZE / 2);
+      expect(result).to.eql(MAX_OVERLAY_SIZE / 2);
     });
   });
 });

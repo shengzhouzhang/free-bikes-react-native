@@ -8,9 +8,10 @@ import CONFIG from '../../config';
 
 const DEFAULT_ZOOM_LEVEL = CONFIG.DEFAULT_ZOOM_LEVEL;
 const ZOOMED_IN = CONFIG.ZOOMED_IN;
-const STROKE_COLOR = CONFIG.STROKE_COLOR;
-const MAX_CIRCLE_SIZE = CONFIG.MAX_CIRCLE_SIZE;
-const MIN_CIRCLE_SIZE = CONFIG.MIN_CIRCLE_SIZE;
+const OVERLAY_COLOR = CONFIG.OVERLAY_COLOR;
+const MAX_OVERLAY_SIZE = CONFIG.MAX_OVERLAY_SIZE;
+const MIN_OVERLAY_SIZE = CONFIG.MIN_OVERLAY_SIZE;
+const ENABLE_ANNOTATION = CONFIG.ENABLE_ANNOTATION;
 
 export default class Map extends React.Component {
   static propTypes = {
@@ -35,6 +36,9 @@ export default class Map extends React.Component {
         <React.MapView style={styles.map}
           region={this.state.region}
           rotateEnabled={false}
+          annotations={
+            ENABLE_ANNOTATION ? this.parseEntitiesToAnnotations(this.props.stations) : []
+          }
           overlays={this.parseEntitiesToOverlays(this.props.stations)}
         />
         { this.state.showGetDirection ? (<GetDirection address={this.state.name} />) : (undefined) }
@@ -69,7 +73,8 @@ export default class Map extends React.Component {
       return {
         title: entity.name,
         latitude: entity.latitude,
-        longitude: entity.longitude
+        longitude: entity.longitude,
+        onFocus: this.selectStation.bind(this, entity.id, entity.name),
       };
     });
   };
@@ -84,15 +89,21 @@ export default class Map extends React.Component {
           longitude: entity.longitude,
         } ],
         lineWidth: this.getOverlaySize(entity.numberOfBikes, largest),
-        strokeColor: STROKE_COLOR
+        strokeColor: OVERLAY_COLOR
       };
     });
   };
   getOverlaySize = (numberOfBikes, largest) => {
-    if (largest && numberOfBikes >= largest) { return MAX_CIRCLE_SIZE; }
-    if (numberOfBikes <= 0) { return MIN_CIRCLE_SIZE; }
-    if (largest <= 0) { return MIN_CIRCLE_SIZE; }
-    return _.max([ MIN_CIRCLE_SIZE + (numberOfBikes / largest) *
-      (MAX_CIRCLE_SIZE - MIN_CIRCLE_SIZE), MIN_CIRCLE_SIZE ]);
+    if (largest && numberOfBikes >= largest) { return MAX_OVERLAY_SIZE; }
+    if (numberOfBikes <= 0) { return MIN_OVERLAY_SIZE; }
+    if (largest <= 0) { return MIN_OVERLAY_SIZE; }
+    return _.max([ MIN_OVERLAY_SIZE + (numberOfBikes / largest) *
+      (MAX_OVERLAY_SIZE - MIN_OVERLAY_SIZE), MIN_OVERLAY_SIZE ]);
+  };
+  selectStation = (id, name) => {
+    SelectedStation.dispatch({
+      type: 'SELECT',
+      station: { id, name }
+    });
   };
 }
