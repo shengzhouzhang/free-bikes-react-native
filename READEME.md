@@ -70,4 +70,4 @@ It will fix most of issues.
 
 # Comment
 
-Overall, the development process was smooth, although I met a few conflicts between react native and other npm libraries. This is understandable, since react native is very young. Actually, I am very surprised I can still use Redux, Mocha, and Enzyme. It makes me feel I am developing web application as the usually way. I was trying to add an automated UI test, unfortunately, it is not been done, the framework I used to test web does not support react native.
+Overall, the development process was smooth, although I met a few conflicts between react native and other npm libraries. This is understandable, since react native is very young. Actually, I am very surprised I can still use Redux, Mocha, and Enzyme. It makes me feel I am developing web application as the usually way. I was trying to add an automated UI test, unfortunately, it is not been done, the framework I used to test web is quite different to test mobile.
