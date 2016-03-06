@@ -21,7 +21,8 @@ Not supporting npm 3
 Please navigate to the root folder of this program. And do
 
 ```
-$ npm install --production && npm start
+$ npm install --production
+$ npm start
 ```
 
 It will build the program with the production dependencies only.
