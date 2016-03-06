@@ -1,5 +1,6 @@
 /* global describe it */
 
+import _ from 'lodash';
 import React from 'react-native';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
@@ -12,6 +13,7 @@ import CONFIG from '../../../src/config';
 describe('Map component', () => {
 
   const TEST_NAME = 'station name';
+  const OVERLAY_COLOR = CONFIG.OVERLAY_COLOR;
   const MAX_OVERLAY_SIZE = CONFIG.MAX_OVERLAY_SIZE;
   const MIN_OVERLAY_SIZE = CONFIG.MIN_OVERLAY_SIZE;
   const ZOOMED_IN = CONFIG.ZOOMED_IN;
@@ -117,14 +119,11 @@ describe('Map component', () => {
     it('should get annotations for MapView', () => {
       let wrapper = shallow(<Map stations={TEST_STATIONS} />);
       let results = wrapper.instance().parseEntitiesToAnnotations(TEST_STATIONS);
-      expect(results).to.eql([
-        { title: TEST_STATIONS[0].name, latitude: TEST_STATIONS[0].latitude,
-          longitude: TEST_STATIONS[0].longitude },
-        { title: TEST_STATIONS[1].name, latitude: TEST_STATIONS[1].latitude,
-          longitude: TEST_STATIONS[1].longitude },
-        { title: TEST_STATIONS[2].name, latitude: TEST_STATIONS[2].latitude,
-          longitude: TEST_STATIONS[2].longitude }
-      ]);
+      _.forEach(results, (result, index) => {
+        expect(result.title).to.eql(TEST_STATIONS[index].name);
+        expect(result.latitude).to.eql(TEST_STATIONS[index].latitude);
+        expect(result.longitude).to.eql(TEST_STATIONS[index].longitude);
+      });
     });
   });
 
@@ -139,23 +138,23 @@ describe('Map component', () => {
           latitude: TEST_STATIONS[0].latitude,
           longitude: TEST_STATIONS[0].longitude
         } ],
-        lineWidth: 15, strokeColor: '#cd5c5c'
+        lineWidth: MAX_OVERLAY_SIZE, strokeColor: OVERLAY_COLOR
       }, {
         id: TEST_STATIONS[1].id,
         coordinates: [ {
           latitude: TEST_STATIONS[1].latitude,
           longitude: TEST_STATIONS[1].longitude
         } ],
-        lineWidth: 15,
-        strokeColor: '#cd5c5c'
+        lineWidth: MAX_OVERLAY_SIZE,
+        strokeColor: OVERLAY_COLOR
       }, {
         id: TEST_STATIONS[2].id,
         coordinates: [ {
           latitude: TEST_STATIONS[2].latitude,
           longitude: TEST_STATIONS[2].longitude
         } ],
-        lineWidth: 15,
-        strokeColor: '#cd5c5c'
+        lineWidth: MAX_OVERLAY_SIZE,
+        strokeColor: OVERLAY_COLOR
       } ]);
     });
   });

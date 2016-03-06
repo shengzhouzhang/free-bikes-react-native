@@ -22,7 +22,7 @@ export default class SearchTool extends React.Component {
     return (
       <React.View style={styles.searchTool}>
         <Input value={this.state.text} onTextChange={this.onTextChangeHandler} />
-        { this.state.isTyping && this.state.text.length > this.props.minimumKeywordLength ?
+        { this.state.isTyping && this.state.text.length >= this.props.minimumKeywordLength ?
           (<Results stations={this.filter(this.props.stations, this.state.text)} />) : (undefined) }
       </React.View>
     );
@@ -42,7 +42,7 @@ export default class SearchTool extends React.Component {
     this.setState({ text: text, isTyping: true });
   };
   filter = (entities, keyword = '') => {
-    if (keyword.length <= this.props.minimumKeywordLength) { return []; }
+    if (keyword.length < this.props.minimumKeywordLength) { return []; }
     return _.filter(entities, entity => {
       return entity.name.search(new RegExp(keyword, 'i')) >= 0;
     });

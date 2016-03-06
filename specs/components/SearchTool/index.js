@@ -53,9 +53,9 @@ describe('SearchTool component', () => {
 
   describe('render Result component', () => {
 
-    it(`should show Result component when typing more then ${MIN_LEN} characters`, () => {
+    it(`should show Result component when typing more then (include) ${MIN_LEN} characters`, () => {
       let wrapper = shallow(<SearchTool stations={TEST_STATIONS} minimumKeywordLength={MIN_LEN} />);
-      wrapper.instance().setState({ text: TEST_KEYWORD.substring(0, MIN_LEN + 1), isTyping: true });
+      wrapper.instance().setState({ text: TEST_KEYWORD.substring(0, MIN_LEN), isTyping: true });
       wrapper.update();
       expect(wrapper.find(Result)).to.have.length(1);
       expect(wrapper.find(Result).prop('stations').length).to.eql(2);
@@ -63,14 +63,14 @@ describe('SearchTool component', () => {
 
     it('should hide Result component when typing less characters', () => {
       let wrapper = shallow(<SearchTool stations={TEST_STATIONS} minimumKeywordLength={MIN_LEN} />);
-      wrapper.instance().setState({ text: TEST_KEYWORD.substring(0, MIN_LEN), isTyping: true });
+      wrapper.instance().setState({ text: TEST_KEYWORD.substring(0, MIN_LEN - 1), isTyping: true });
       wrapper.update();
       expect(wrapper.find(Result)).to.have.length(0);
     });
 
     it('should hide Result component when clicking one of the results', () => {
       let wrapper = shallow(<SearchTool stations={TEST_STATIONS} />);
-      wrapper.instance().setState({ text: TEST_KEYWORD.substring(0, MIN_LEN + 1), isTyping: true });
+      wrapper.instance().setState({ text: TEST_KEYWORD.substring(0, MIN_LEN), isTyping: true });
       wrapper.update();
       expect(wrapper.find(Result)).to.have.length(1);
       wrapper.instance().setState({ isTyping: false });
@@ -139,7 +139,8 @@ describe('SearchTool component', () => {
 
     it(`should not match any when keyword less then ${MIN_LEN} characters`, () => {
       let wrapper = shallow(<SearchTool stations={TEST_STATIONS} />);
-      let results = wrapper.instance().filter(TEST_STATIONS, TEST_KEYWORD.substring(0, MIN_LEN));
+      let results = wrapper.instance()
+        .filter(TEST_STATIONS, TEST_KEYWORD.substring(0, MIN_LEN - 1));
       expect(results.length).to.eql(0);
     });
   });
