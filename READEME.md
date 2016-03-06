@@ -16,13 +16,15 @@ React Native 0.21.0
 
 Not supporting npm 3
 
-# Installation
+# Installation & Building
 
 Please navigate to the root folder of this program. And do
 
 ```
-$ npm install
+$ npm install --production && npm start
 ```
+
+It will build the program without the development dependencies.
 
 # Testing
 
