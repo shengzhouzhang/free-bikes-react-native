@@ -8,7 +8,8 @@ const EXTERNAL_MAP_URI = CONFIG.EXTERNAL_MAP_URI;
 
 export default class GetDirection extends React.Component {
   static propTypes = {
-    address: React.PropTypes.string.isRequired
+    latitude: React.PropTypes.number.isRequired,
+    longitude: React.PropTypes.number.isRequired
   };
   render = () => {
     return (
@@ -20,13 +21,8 @@ export default class GetDirection extends React.Component {
     );
   };
   onPressHandler = () => {
-    let url = `${EXTERNAL_MAP_URI}?daddr=${this.encodeUrl(this.props.address)}`;
+    let url = `${EXTERNAL_MAP_URI}?ll=${this.props.latitude},${this.props.longitude}&saddr=Current%20Location`;
     console.log(this.props, url);
     React.Linking.openURL(url);
-  };
-  encodeUrl = (url) => {
-    return _.filter(url.split(' '), token => {
-      return token !== '-' && token !== '/';
-    }).join('+');
   };
 }

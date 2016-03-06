@@ -51,12 +51,15 @@ describe('Map component', () => {
 
   describe('render Direction component', () => {
 
-    it('should provide address when showGetDirection is true', () => {
+    it('should provide latitude and longitude when showGetDirection is true', () => {
       let wrapper = shallow(<Map stations={TEST_STATIONS} />);
       wrapper.instance().setState({ showGetDirection: true });
       wrapper.update();
       expect(wrapper.find(GetDirection)).to.have.length(1);
-      expect(wrapper.find(GetDirection).prop('address')).to.eql(wrapper.instance().state.name);
+      expect(wrapper.find(GetDirection).prop('latitude'))
+        .to.eql(wrapper.instance().state.region.latitude);
+      expect(wrapper.find(GetDirection).prop('longitude'))
+        .to.eql(wrapper.instance().state.region.longitude);
     });
 
     it('should hide Direction when showGetDirection is false', () => {

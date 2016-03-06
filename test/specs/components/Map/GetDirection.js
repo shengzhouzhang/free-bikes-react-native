@@ -33,12 +33,4 @@ describe('GetDirection component', () => {
       expect(wrapper.instance().onPressHandler).to.throws('LinkingManager is not defined');
     });
   });
-
-  describe('encodeUrl', () => {
-
-    it('should replace blank speces with +', () => {
-      let wrapper = shallow(<GetDirection address={TEST_ADDRESS} />);
-      expect(wrapper.instance().encodeUrl(TEST_ADDRESS)).to.eql(TEST_ADDRESS.split(' ').join('+'));
-    });
-  });
 });

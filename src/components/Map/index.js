@@ -41,7 +41,7 @@ export default class Map extends React.Component {
           }
           overlays={this.parseEntitiesToOverlays(this.props.stations)}
         />
-        { this.state.showGetDirection ? (<GetDirection address={this.state.name} />) : (undefined) }
+        { this.state.showGetDirection ? (<GetDirection {...this.state.region} />) : (undefined) }
       </React.View>
     );
   };
