@@ -60,7 +60,8 @@ It will fix most of issues.
 
 # Code Organizing
 
-`/specs` - unit tests
+`/test/specs` - unit tests
+`/test/utils` - util/helper functions
 `/src/components` - react components
 `/src/repositories` - repository objects to query api endpoint
 `/src/stores` - redux stores
