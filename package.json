@@ -6,7 +6,7 @@
     "prestart": "rm -rf node_modules/react node_modules/react-native-mock",
     "start": "node node_modules/react-native/local-cli/cli.js run-ios",
     "pretest": "npm install",
-    "test": "mocha 'specs/**/*.js' --require react-native-mock/mock --compilers js:babel-core/register"
+    "test": "mocha 'test/specs/**/*.js' --require react-native-mock/mock --compilers js:babel-core/register"
   },
   "dependencies": {
     "babel-core": "^6.6.4",

@@ -1,6 +1,6 @@
 
 import Chance from 'chance';
-import BikeStation from '../src/domains/BikeStation';
+import BikeStation from '../../src/domains/BikeStation';
 
 let chance = new Chance();
 

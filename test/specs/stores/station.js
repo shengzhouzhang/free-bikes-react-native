@@ -3,7 +3,7 @@
 import Promise from 'bluebird';
 import sinon from 'sinon';
 import { expect } from 'chai';
-import SelectedStation, { reducer } from '../../src/stores/station';
+import SelectedStation, { reducer } from '../../../src/stores/station';
 
 describe('SelectedStation Store', () => {
 

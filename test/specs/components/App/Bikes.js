@@ -6,11 +6,11 @@ import React from 'react-native';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
-import Bike from '../../../src/components/App/Bikes';
-import Map from '../../../src/components/Map';
-import SearchTool from '../../../src/components/SearchTool';
-import Loading from '../../../src/components/Loading';
-import BikesRepository from '../../../src/repositories/Bikes';
+import Bike from '../../../../src/components/App/Bikes';
+import Map from '../../../../src/components/Map';
+import SearchTool from '../../../../src/components/SearchTool';
+import Loading from '../../../../src/components/Loading';
+import BikesRepository from '../../../../src/repositories/Bikes';
 
 describe('Bike App', () => {
 

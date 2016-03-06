@@ -3,7 +3,7 @@
 import React from 'react-native';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
-import GetDirection from '../../../src/components/Map/GetDirection';
+import GetDirection from '../../../../src/components/Map/GetDirection';
 
 describe('GetDirection component', () => {
 

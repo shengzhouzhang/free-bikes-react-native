@@ -5,10 +5,10 @@ import React from 'react-native';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
-import Map from '../../../src/components/Map';
-import GetDirection from '../../../src/components/Map/GetDirection';
-import SelectedStation from '../../../src/stores/station';
-import CONFIG from '../../../src/config';
+import Map from '../../../../src/components/Map';
+import GetDirection from '../../../../src/components/Map/GetDirection';
+import SelectedStation from '../../../../src/stores/station';
+import CONFIG from '../../../../src/config';
 
 describe('Map component', () => {
 

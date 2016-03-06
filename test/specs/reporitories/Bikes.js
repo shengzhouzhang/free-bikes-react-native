@@ -3,8 +3,8 @@
 import _ from 'lodash';
 import { expect } from 'chai';
 import fetch from 'node-fetch';
-import { genAddressList, genRawDataArray } from '../gen';
-import BikesRepository, { parseRawToEntities, parseAddress } from '../../src/repositories/Bikes';
+import { genAddressList, genRawDataArray } from '../../utils/gen';
+import BikesRepository, { parseRawToEntities, parseAddress } from '../../../src/repositories/Bikes';
 
 const DEFAULT_TIMEOUT = 10 * 1000;
 

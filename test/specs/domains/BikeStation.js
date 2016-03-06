@@ -2,7 +2,7 @@
 
 import _ from 'lodash';
 import { expect } from 'chai';
-import { genBikeStationList } from '../gen';
+import { genBikeStationList } from '../../utils/gen';
 
 describe('BikeStation Domain', () => {
 
