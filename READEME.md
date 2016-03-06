@@ -4,7 +4,7 @@ This is a demo app for demonstrate my skills only. Everything mentions in the sp
 
 # Technical Stacks
 
-React Native, Redux, Mocha, Enzyme, Node JS, ES6, ES7
+React Native, Redux, Mocha, Enzyme, Node JS, ES6, ES7, Gulp
 
 # Environment
 
@@ -26,7 +26,7 @@ $ npm install
 
 # Testing
 
-Please do
+To run the tests, please do
 
 ```
 $ npm test
@@ -44,4 +44,20 @@ $ npm start
 
 Please use `npm start` instead of `react-native start` or `react-native run-ios`.
 
-There is a chance the simulator loads the program before server is ready. If this happened, please reload the program on simulator by pressing COMMAND + R or CONTROL + R.
+There is a chance the simulator loads the program before server is ready. If this happened, please wait for the server to start and reload the simulator by pressing COMMAND + R or CONTROL + R.
+
+# Troubleshooting
+
+If you couldn't launch the application for some reasons. Please do
+
+```
+$ rm -rf node_modules/
+$ node install --production
+$ npm start --reset-cache
+```
+
+It will fix most of issues.
+
+# Comment
+
+Overall, the development is smooth, although I met a few conflicts between react native and other npm libraries. This is understandable, since react native is very young. Actually, I am very surprised I can still use Redux, Mocha, and Enzyme. It makes me feel I am developing web application as the usually way.
