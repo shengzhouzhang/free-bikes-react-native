@@ -23,6 +23,7 @@
     "strict": 0,
     "func-names": 0,
     "array-bracket-spacing": [2, "always"],
+    "react/prefer-stateless-function": 0,
     "react/sort-comp": [2, {
       order: [
         'static-methods',
