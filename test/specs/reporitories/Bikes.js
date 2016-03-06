@@ -2,23 +2,41 @@
 
 import _ from 'lodash';
 import { expect } from 'chai';
-import fetch from 'node-fetch';
+import sinon from 'sinon';
 import { genAddressList, genRawDataArray } from '../../utils/gen';
 import BikesRepository, { parseRawToEntities, parseAddress } from '../../../src/repositories/Bikes';
-
-const DEFAULT_TIMEOUT = 10 * 1000;
+import CONFIG from '../../../src/config';
 
 describe('bikes repository', () => {
 
   describe('BikesRepository', () => {
 
-    let bikesRepository = new BikesRepository(fetch);
+    const TEST_ERROR_MSG = 'CANCEL_BY_TEST';
 
-    it('should fetch bikes from endpoint', function (done) {
-      this.timeout(DEFAULT_TIMEOUT);
+    it('should provide the endpoint', () => {
+      let fetch = sinon.stub().returns(Promise.reject(new Error(TEST_ERROR_MSG)));
+      let bikesRepository = new BikesRepository(fetch);
+
       bikesRepository.fetchBikes()
+        .catch(err => console.log(err));
+      expect(fetch.called).to.eql(true);
+      expect(fetch.getCall(0).args[0]).to.eql(CONFIG.FETCH_BIKES_URI);
+    });
+
+    it('should return error', () => {
+      let fetch = sinon.stub().returns(Promise.reject(new Error(TEST_ERROR_MSG)));
+      let bikesRepository = new BikesRepository(fetch);
+
+      return bikesRepository.fetchBikes()
+        .catch(err => expect(err.message).to.eql(TEST_ERROR_MSG));
+    });
+
+    it('should return entities', () => {
+      let fetch = sinon.stub().returns(Promise.resolve({ json: () => genRawDataArray(3) }));
+      let bikesRepository = new BikesRepository(fetch);
+      return bikesRepository.fetchBikes()
         .then(data => {
-          expect(data.length > 0).to.eql(true);
+          expect(data).to.have.length(3);
           _.forEach(data, item => {
             expect(_.isString(item.id)).to.eql(true);
             expect(_.isString(item.name)).to.eql(true);
@@ -27,10 +45,6 @@ describe('bikes repository', () => {
             expect(_.isNumber(item.longitude) && !_.isNaN(item.longitude)).to.eql(true);
             expect(_.isString(item.address) && !_.isNaN(item.address)).to.eql(true);
           });
-          done();
-        })
-        .catch(err => {
-          return done(err);
         });
     });
   });

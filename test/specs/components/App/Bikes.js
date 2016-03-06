@@ -1,6 +1,5 @@
 /* global describe it */
 
-import fetch from 'node-fetch';
 import Promise from 'bluebird';
 import React from 'react-native';
 import { expect } from 'chai';
@@ -13,6 +12,8 @@ import Loading from '../../../../src/components/Loading';
 import BikesRepository from '../../../../src/repositories/Bikes';
 
 describe('Bike App', () => {
+
+  let fetch = sinon.spy();
 
   describe('initial state', () => {
 
