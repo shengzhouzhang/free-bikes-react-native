@@ -1,52 +1,12 @@
 /* global describe it */
 
 import _ from 'lodash';
-import Chance from 'chance';
 import { expect } from 'chai';
 import fetch from 'node-fetch';
+import { genAddressList, genRawDataArray } from '../gen';
 import BikesRepository, { parseRawToEntities, parseAddress } from '../../src/repositories/Bikes';
 
 const DEFAULT_TIMEOUT = 10 * 1000;
-
-let chance = new Chance();
-
-function genAddress () {
-  return {
-    address: chance.address(),
-    city: chance.city(),
-    state: chance.state(),
-    zip: chance.zip()
-  };
-}
-
-function genAddressList (num) {
-  let data = [];
-  for (let i = 0; i < num; i++) {
-    data.push(genAddress());
-  }
-  return data;
-}
-
-function genRawData (id) {
-  return {
-    id: id.toString() || '0',
-    featurename: chance.name(),
-    nbbikes: chance.integer(),
-    coordinates: {
-      latitude: chance.floating(),
-      longitude: chance.floating(),
-      human_address: '{}'
-    }
-  };
-}
-
-function genRawDataArray (num) {
-  let data = [];
-  for (let i = 0; i < num; i++) {
-    data.push(genRawData(i));
-  }
-  return data;
-}
 
 describe('bikes repository', () => {
 
