@@ -24,7 +24,8 @@ Please navigate to the root folder of this program. And do
 $ npm install --production && npm start
 ```
 
-It will build the program without the development dependencies.
+It will build the program with the production dependencies only.
+Notes that it is very important to only use production dependencies to build the program.
 
 # Testing
 
@@ -33,6 +34,8 @@ To run the tests, please do
 ```
 $ npm test
 ```
+
+This will automatically install development dependencies and run the tests.
 
 # Running
 
