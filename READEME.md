@@ -2,6 +2,8 @@
 
 This is a demo app for demonstrate my skills only. Everything mentions in the spec is done. The program is runnable and has been tested with Xcode iPhone 6 simulator.
 
+For the auto suggestions, the option list will show up after type more than (included) 3 characters.
+
 # Technical Stacks
 
 React Native, Redux, Mocha, Enzyme, Node JS, ES6, ES7, Gulp
