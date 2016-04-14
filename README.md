@@ -1,8 +1,6 @@
 # bikes-share-react-native-ios
 
-This is a demo app for demonstrate my skills only. Everything mentions in the spec is done. The program is runnable and has been tested with Xcode iPhone 6 simulator.
-
-For the auto suggestions, the option list will show up after type more than (included) 3 characters.
+This program is only tested with Xcode iPhone 6 simulator.
 
 # Technical Stacks
 
@@ -76,7 +74,3 @@ It will fix most of issues.
 `/src/domains` - domain objects
 `/src/config` - config
 `/src/style` - styles
-
-# Comment
-
-Overall, the development process was smooth, although I met a few conflicts between react native and other npm libraries. This is understandable, since react native is very young. Actually, I am very surprised I can still use Redux, Mocha, and Enzyme. It makes me feel I am developing web application as the usually way. I was trying to add an automated UI test, unfortunately, it is not been done, the framework I used to test web is quite different to test mobile.
