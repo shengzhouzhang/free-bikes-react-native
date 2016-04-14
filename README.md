@@ -66,11 +66,11 @@ It will fix most of issues.
 
 # Code Organizing
 
-`/test/specs` - unit tests
-`/test/utils` - util/helper functions
-`/src/components` - react components
-`/src/repositories` - repository objects to query api endpoint
-`/src/stores` - redux stores
-`/src/domains` - domain objects
-`/src/config` - config
-`/src/style` - styles
+- `/test/specs` - unit tests
+- `/test/utils` - util/helper functions
+- `/src/components` - react components
+- `/src/repositories` - repository objects to query api endpoint
+- `/src/stores` - redux stores
+- `/src/domains` - domain objects
+- `/src/config` - config
+- `/src/style` - styles
